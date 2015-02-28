@@ -50,4 +50,8 @@ void Chair::make_serial_command(const std::string& action)
 	}
 }
 
+void Chair::make_net_command(unsigned int command) 
+{
+
+}
 }

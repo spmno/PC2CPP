@@ -55,17 +55,22 @@ void NetServer::read()
 	LOG_DEBUG << __FUNCTION__;
 	int current_socket_number = socket_container.size() - 1;
 	boost::asio::streambuf buffer;
-	while(true) {
-		boost::asio::read_until(*socket_container[current_socket_number], 
-			buffer, '\n');
-		std::istream is(&buffer);
-		std::string line;
-		std::getline(is, line);
-		for (auto function : update_function_container) {
-			function(line);
+	try {
+		while(true) {
+			boost::asio::read_until(*socket_container[current_socket_number], 
+				buffer, '\n');
+			std::istream is(&buffer);
+			std::string line;
+			std::getline(is, line);
+			for (auto function : update_function_container) {
+				function(line);
+			}
+			LOG_DEBUG << line;
 		}
-		LOG_DEBUG << line;
+	} catch(const boost::system::system_error& e) {
+		LOG_DEBUG << e.what();
 	}
+
 }
 
 void NetServer::read_wrapper(NetServer *self)

@@ -1,0 +1,1 @@
+{ "serial":[{"front-mid-light":{"port":"\\\\.\\COM20", "baudrate":115200, "status":"on"}}, {"chair":{"port":"com2", "baudrate":9600, "status":"off"}}, {"iris-door":{"port":"\\\\.\\COM19", "baudrate":115200, "status":"off"}}]}

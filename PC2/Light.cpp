@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <json/json.h>
 #include "Light.h"
 #include "MXLogger.h"
 
@@ -38,6 +39,16 @@ void Light::make_serial_command(const std::string& action)
 		serial_command.data[5] = 0x41;
 	} else if (action == "mix-off") {
 		serial_command.data[5] = 0x42;
+	}
+}
+
+void Light::make_net_command(unsigned int command) 
+{
+	Json::FastWriter writer;
+	Json::Value value;
+	switch(command) {
+	case 0x01:
+		break;
 	}
 }
 

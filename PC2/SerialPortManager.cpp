@@ -56,7 +56,9 @@ void SerialPortManager::read_task(std::string& port_name, SerialPortManager* sel
 	unsigned char data[8];
 	while(true) {
 		self->serial_ports[port_name]->read_some(boost::asio::buffer(data, sizeof(data)));
-			
+		for (auto callback : self->update_function_container) {
+			callback(data);
+		}
 		LOG_DEBUG << data;
 	}
 }

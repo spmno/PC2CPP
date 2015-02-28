@@ -37,8 +37,14 @@ void updateNetFunction(string& content)
 	}
 }
 
-void updateNetFunction(const unsigned char* content)
+void updateSerialFunction(const unsigned char* content)
 {
+	PartFactory part_factory;
+	unsigned char part = content[4];
+	unsigned int command = content[6];
+	std::unique_ptr<Part> part_ptr(part_factory.createPart(part));
+	part_ptr->make_net_command(command);
+	NetServer::get_instance().write(part_ptr->get_net_command());
 
 }
 

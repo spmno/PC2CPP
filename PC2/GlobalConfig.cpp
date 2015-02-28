@@ -18,7 +18,7 @@ GlobalConfig::GlobalConfig() : config_file_name("config.json")
 bool GlobalConfig::init()
 {
 	std::ifstream config_stream(config_file_name);
-	if (!config_stream.bad()) {
+	if (config_stream.good()) {
 		try {
 			Json::Reader reader;
 			Json::Value value;
@@ -32,7 +32,7 @@ bool GlobalConfig::init()
 					SerialPort serialport;
 					Json::Value::Members part_member = port.getMemberNames();
 					// get part name as the map key
-					string port_name = *(part_member.begin());
+					std::string port_name = *(part_member.begin());
 					int baudrate = port[port_name]["baudrate"].asInt();
 					LOG_DEBUG << baudrate;
 					Json::Value part_array_value = port[port_name]["parts"];
