@@ -12,6 +12,7 @@
 #include "GlobalConfig.h"
 #include "SerialPortManager.h"
 #include "PartFactory.h"
+#include "SerialCommandDisposer.h"
 
 using namespace mxnavi;
 
@@ -39,13 +40,8 @@ void updateNetFunction(string& content)
 
 void updateSerialFunction(const unsigned char* content)
 {
-	PartFactory part_factory;
-	unsigned char part = content[4];
-	unsigned int command = content[6];
-	std::unique_ptr<Part> part_ptr(part_factory.createPart(part));
-	part_ptr->make_net_command(command);
-	NetServer::get_instance().write(part_ptr->get_net_command());
-
+	SerialCommandDisposer disposer;
+	disposer.dispose(content);
 }
 
 int _tmain(int argc, _TCHAR* argv[])

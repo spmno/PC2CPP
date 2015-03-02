@@ -46,6 +46,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>E:\code\C++\boost_1_57_0;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;D:\Tools\opencv\build\include;D:\Tools\lua\5.1\include;E:\Qt5.0.0-MSVC2012-x86\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)PlatformSDK\lib;$(VCInstallDir)PlatformSDK\common\lib;E:\code\C++\boost_1_57_0\stage\lib;D:\Tools\opencv-build\lib\Release;D:\Tools\lua\5.1\lib;E:\Qt5.0.0-MSVC2012-x86\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -55,6 +57,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -64,12 +67,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,7 +86,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdjustableLight.h" />
     <ClInclude Include="Chair.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="FrontMidLight.h" />
     <ClInclude Include="GlobalConfig.h" />
     <ClInclude Include="Light.h" />
@@ -91,6 +97,7 @@
     <ClInclude Include="NetServer.h" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="PartFactory.h" />
+    <ClInclude Include="SerialCommandDisposer.h" />
     <ClInclude Include="SerialPort.h" />
     <ClInclude Include="SerialPortManager.h" />
     <ClInclude Include="src\lib_json\json_batchallocator.h" />
@@ -100,7 +107,9 @@
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdjustableLight.cpp" />
     <ClCompile Include="Chair.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="FrontMidLight.cpp" />
     <ClCompile Include="GlobalConfig.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -110,6 +119,7 @@
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartFactory.cpp" />
     <ClCompile Include="PC2.cpp" />
+    <ClCompile Include="SerialCommandDisposer.cpp" />
     <ClCompile Include="SerialPort.cpp" />
     <ClCompile Include="SerialPortManager.cpp" />
     <ClCompile Include="src\lib_json\json_reader.cpp" />
