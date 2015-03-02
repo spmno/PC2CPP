@@ -16,7 +16,7 @@ SerialCommandDisposer::~SerialCommandDisposer(void)
 
 void SerialCommandDisposer::dispose(const unsigned char* command)
 {
-	PartFactory part_factory;
+	PartFactory &part_factory = PartFactory::get_instance();
 	unsigned char part = command[4];
 	if (part == 0x32) {
 

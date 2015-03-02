@@ -20,19 +20,23 @@ void updateNetFunction(string& content)
 {
 	Json::Reader reader;
 	Json::Value value;
-	PartFactory part_factory;
+	PartFactory &part_factory = PartFactory::get_instance();
 	
 	if (reader.parse(content, value)) {
 	
 		if (value["type"].asString() == "init") {
 			return;
+		} else if (value["type"].asString() == "single") {
+			std::unique_ptr<Part> part_ptr(part_factory.createPart(value["part"].asString()));
+			part_ptr->make_serial_command(value["action"].asString());
+			bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
+			if (!ret) {
+				LOG_ERROR << "write " << value["part"].asString() << " command failed!";
+			}
+		} else {
+
 		}
-		std::unique_ptr<Part> part_ptr(part_factory.createPart(value["part"].asString()));
-		part_ptr->make_serial_command(value["action"].asString());
-		bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
-		if (!ret) {
-			LOG_ERROR << "write " << value["part"].asString() << " command failed!";
-		}
+
 	} else {
 		LOG_ERROR << "Parse command failed!";
 	}
