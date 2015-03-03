@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <map>
+#include <memory>
 #include "Part.h"
 
 namespace mxnavi {
@@ -14,11 +15,11 @@ public:
 		static PartFactory part_factory;
 		return part_factory;
 	}
-	Part* createPart(const std::string& part_name);
-	Part* createPart(unsigned int part_number);
+	std::shared_ptr<Part> createPart(const std::string& part_name);
+	std::shared_ptr<Part> createPart(unsigned int part_number);
 private:
 	PartFactory();
-	std::map<std::string, Part*> part_containner;
+	std::map<std::string, std::shared_ptr<Part> > part_containner;
 	std::map<int, std::string> part_relationship_table;
 };
 

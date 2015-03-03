@@ -27,7 +27,7 @@ void updateNetFunction(string& content)
 		if (value["type"].asString() == "init") {
 			return;
 		} else if (value["type"].asString() == "single") {
-			std::unique_ptr<Part> part_ptr(part_factory.createPart(value["part"].asString()));
+			std::shared_ptr<Part> part_ptr(part_factory.createPart(value["part"].asString()));
 			part_ptr->make_serial_command(value["action"].asString());
 			bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
 			if (!ret) {
