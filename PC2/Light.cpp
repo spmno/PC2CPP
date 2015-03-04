@@ -16,6 +16,11 @@ Light::~Light(void)
 
 }
 
+bool Light::make_init_command()
+{
+	return true;
+}
+
 void Light::make_serial_command(const std::string& action)
 {
 	LOG_DEBUG << __FUNCTION__;

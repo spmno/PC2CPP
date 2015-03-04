@@ -19,6 +19,9 @@
     <Filter Include="part">
       <UniqueIdentifier>{f7f26d97-7e2c-4440-bf11-cdab1ea5490a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mode">
+      <UniqueIdentifier>{d2022654-0312-4d5b-8c2c-37bd17bb0219}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -81,6 +84,21 @@
     <ClInclude Include="SerialCommandDisposer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ReadSerialTask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mode.h">
+      <Filter>mode</Filter>
+    </ClInclude>
+    <ClInclude Include="NearCarMode.h">
+      <Filter>mode</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeFactory.h">
+      <Filter>mode</Filter>
+    </ClInclude>
+    <ClInclude Include="ModeManager.h">
+      <Filter>mode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -139,6 +157,21 @@
     </ClCompile>
     <ClCompile Include="SerialCommandDisposer.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadSerialTask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mode.cpp">
+      <Filter>mode</Filter>
+    </ClCompile>
+    <ClCompile Include="NearCarMode.cpp">
+      <Filter>mode</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeFactory.cpp">
+      <Filter>mode</Filter>
+    </ClCompile>
+    <ClCompile Include="ModeManager.cpp">
+      <Filter>mode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

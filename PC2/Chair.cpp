@@ -14,6 +14,12 @@ Chair::~Chair(void)
 {
 }
 
+bool Chair::make_init_command()
+{
+	make_serial_command("start");
+	return true;
+}
+
 void Chair::make_serial_command(const std::string& action)
 {
 	if (action == "start") {

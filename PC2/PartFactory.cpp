@@ -7,12 +7,12 @@
 
 namespace mxnavi {
 
-std::shared_ptr<Part> PartFactory::createPart(const std::string& part_name) 
+std::shared_ptr<Part> & PartFactory::createPart(const std::string& part_name) 
 {	
 	return part_containner[part_name];
 }
 
-std::shared_ptr<Part> PartFactory::createPart(unsigned int part_number)
+std::shared_ptr<Part> & PartFactory::createPart(unsigned int part_number)
 {
 	std::string &part_name = part_relationship_table[part_number];
 	return part_containner[part_name];

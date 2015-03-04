@@ -2,11 +2,12 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <boost/noncopyable.hpp>
 #include "Part.h"
 
 namespace mxnavi {
 
-class PartFactory
+class PartFactory : public boost::noncopyable
 {
 public:
 	~PartFactory(void);
@@ -15,8 +16,8 @@ public:
 		static PartFactory part_factory;
 		return part_factory;
 	}
-	std::shared_ptr<Part> createPart(const std::string& part_name);
-	std::shared_ptr<Part> createPart(unsigned int part_number);
+	std::shared_ptr<Part> & createPart(const std::string& part_name);
+	std::shared_ptr<Part> & createPart(unsigned int part_number);
 private:
 	PartFactory();
 	std::map<std::string, std::shared_ptr<Part> > part_containner;

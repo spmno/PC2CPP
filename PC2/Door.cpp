@@ -17,6 +17,7 @@ namespace mxnavi {
 #define POSITION2		0x02
 #define POSITION3		0x03
 #define FAULT			0x04
+#define ACT_FALSE		0x05
 
 Door::Door(void)
 {
@@ -31,19 +32,32 @@ Door::~Door(void)
 
 }
 
+bool Door::make_init_command()
+{
+	return true;
+}
+
 void Door::make_serial_command(const std::string& action) 
 {
 	LOG_DEBUG << __FUNCTION__;
-	if (action == "on") {
+	serial_command.data[3] = 0x01;
+	if (action == "open") {
 		current_command = ON_ACTION;
+		//serial_command.data[5] = ON_ACTION;
 	} else if (action == "off1") {
 		current_command = OFF1_ACTION;
+		//serial_command.data[5] = OFF1_ACTION;
 	} else if (action == "off2") {
 		current_command = OFF2_ACTION;
-	} else if (action == "off") {
+		//serial_command.data[5] = OFF2_ACTION;
+	} else if (action == "close") {
 		current_command = OFF1_ACTION;
+		//serial_command.data[5] = OFF1_ACTION;
+	} else if (action == "stop") {
+		current_command = STOP_ACTION;
+		serial_command.data[5] = STOP_ACTION;
 	}
-	serial_command.data[3] = 0x01;
+	
 	ack_kind = ACTION_TO_CONTROLLER;
 }
 
@@ -60,7 +74,7 @@ void Door::make_net_command(unsigned int command)
 	}
 }
 
-void Door::do_reply_action(unsigned int status) 
+bool Door::do_reply_action(unsigned int status) 
 {
 	switch (status)
 	{
@@ -69,12 +83,14 @@ void Door::do_reply_action(unsigned int status)
 		{
 		case ON_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
-			break;
+			return true;
 		case OFF1_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = OFF1_ACTION;
 			current_command = OFF1_ACTION;
-			break;
+			return true;
 		case OFF2_ACTION:
 			break;
 		default:
@@ -86,16 +102,19 @@ void Door::do_reply_action(unsigned int status)
 		{
 		case ON_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = ON_ACTION;
 			current_command = ON_ACTION;
-			break;
+			return true;
 		case OFF1_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = OFF2_ACTION;
 			current_command = OFF2_ACTION;
-			break;
+			return true;
 		case OFF2_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
-			break;
+			return true;
 		default:
 			break;
 		}
@@ -105,21 +124,29 @@ void Door::do_reply_action(unsigned int status)
 		{
 		case ON_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = ON_ACTION;
 			current_command = ON_ACTION;
-			break;
+			return true;
 		case OFF1_ACTION:
 			break;
 		case OFF2_ACTION:
 			serial_command.data[3] = 0x00;
+			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
-			break;
+			return true;
 		default:
 			break;
 		}
 		break;
+	case ACT_FALSE:
+		serial_command.data[3] = 0x00;
+		serial_command.data[5] = RESET_ACTION;
+		current_command = RESET_ACTION;
+		break;
 	default:
 		break;
 	}
+	return false;
 }
 
 }

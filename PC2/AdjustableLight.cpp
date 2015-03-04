@@ -17,6 +17,11 @@ AdjustableLight::~AdjustableLight(void)
 {
 }
 
+bool AdjustableLight::make_init_command()
+{
+	return true;
+}
+
 void AdjustableLight::make_serial_command(const std::string& command)
 {
 	std::vector<std::string> valueStringContainer;

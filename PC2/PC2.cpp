@@ -13,6 +13,7 @@
 #include "SerialPortManager.h"
 #include "PartFactory.h"
 #include "SerialCommandDisposer.h"
+#include "ModeManager.h"
 
 using namespace mxnavi;
 
@@ -27,14 +28,15 @@ void updateNetFunction(string& content)
 		if (value["type"].asString() == "init") {
 			return;
 		} else if (value["type"].asString() == "single") {
-			std::shared_ptr<Part> part_ptr(part_factory.createPart(value["part"].asString()));
+			std::shared_ptr<Part> part_ptr = part_factory.createPart(value["part"].asString());
 			part_ptr->make_serial_command(value["action"].asString());
 			bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
 			if (!ret) {
 				LOG_ERROR << "write " << value["part"].asString() << " command failed!";
 			}
 		} else {
-
+			ModeManager &mode_manager = ModeManager::get_instance();
+			mode_manager.do_mode(value["name"].asString());
 		}
 
 	} else {
@@ -59,6 +61,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	NetServer::get_instance().start();
 	SerialPortManager::get_instance().init();
 	NetServer::get_instance().addUpdateFunction(updateNetFunction);
+	SerialPortManager::get_instance().addUpdateFunction(updateSerialFunction);
 	HMODULE hInstance= 0;
     hInstance = GetModuleHandle(NULL);
 	HWND hWnd; 

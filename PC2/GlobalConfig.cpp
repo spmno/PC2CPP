@@ -7,6 +7,9 @@
 #include "MXLogger.h"
 #include "SerialPort.h"
 #include "SerialPortManager.h"
+#include "ModeManager.h"
+#include "ModeFactory.h"
+#include "PartFactory.h"
 
 namespace mxnavi {
 
@@ -45,6 +48,20 @@ bool GlobalConfig::init()
 					serial_port_container[port_name] = serialport;
 					if (port[port_name]["status"].asString() == "on") {
 						on_serial_port_container[port_name] = serialport;
+					}
+				}
+
+				ModeManager &mode_manager = ModeManager::get_instance();
+				const Json::Value mode_array_value = value["mode"];
+				for (auto mode : mode_array_value) {
+					std::string mode_name = mode["name"].asString();
+					std::shared_ptr<Mode> mode_ptr = ModeFactory::create_mode(mode_name);
+					mode_manager.add_mode(mode_name, mode_ptr);
+					const Json::Value action_array = mode["actions"];
+					for (auto action : action_array) {
+						std::string part_name = *action.getMemberNames().begin();
+						std::shared_ptr<Part> &part_ptr = PartFactory::get_instance().createPart(part_name);
+						mode_ptr->add_part_action(part_ptr, action[part_name].asString());
 					}
 				}
 			} else {
