@@ -24,12 +24,11 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 	unsigned int command_section = command[7];
 
 	std::mutex mu;
-	mu.lock();
+	std::lock_guard<std::mutex> lock(mu);
 	//dispose the error first
 	if (command_section == 0x05) {
 		part_ptr->make_net_command(command_section);
 		NetServer::get_instance().write(part_ptr->get_net_command());
-		mu.unlock();
 		return ;
 	}
 
@@ -41,7 +40,6 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 		part_ptr->make_net_command(command_section);
 		NetServer::get_instance().write(part_ptr->get_net_command());
 	}
-	mu.unlock();
 }
 
 }
