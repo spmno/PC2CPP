@@ -1,4 +1,5 @@
 #include <memory>
+#include <mutex>
 #include "SerialCommandDisposer.h"
 #include "PartFactory.h"
 #include "NetServer.h"
@@ -22,10 +23,13 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 	std::shared_ptr<Part> &part_ptr = part_factory.createPart(part);
 	unsigned int command_section = command[7];
 
+	std::mutex mu;
+	mu.lock();
 	//dispose the error first
 	if (command_section == 0x05) {
 		part_ptr->make_net_command(command_section);
 		NetServer::get_instance().write(part_ptr->get_net_command());
+		mu.unlock();
 		return ;
 	}
 
@@ -37,7 +41,7 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 		part_ptr->make_net_command(command_section);
 		NetServer::get_instance().write(part_ptr->get_net_command());
 	}
-
+	mu.unlock();
 }
 
 }

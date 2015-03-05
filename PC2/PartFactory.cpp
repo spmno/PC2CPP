@@ -3,7 +3,8 @@
 #include "FrontMidLight.h"
 #include "Chair.h"
 #include "AdjustableLight.h"
-#include "Door.h"
+#include "FrontDoor.h"
+#include "BackDoor.h"
 
 namespace mxnavi {
 
@@ -21,12 +22,14 @@ std::shared_ptr<Part> & PartFactory::createPart(unsigned int part_number)
 PartFactory::PartFactory(void)
 {
 	part_containner["front-mid-light"] = std::make_shared<FrontMidLight>();
-	part_containner["front-door"] = std::make_shared<Door>();
+	part_containner["front-door"] = std::make_shared<FrontDoor>();
+	part_containner["back-door"] = std::make_shared<BackDoor>();
 	part_containner["chair"] = std::make_shared<Chair>();
 	part_containner["adjustable-light"] = std::make_shared<AdjustableLight>();
 
 	part_relationship_table[0x11] = "front-mid-light";
 	part_relationship_table[0x32] = "front-door";
+	part_relationship_table[0x33] = "back-door";
 }
 
 

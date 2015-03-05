@@ -87,8 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjustableLight.h" />
+    <ClInclude Include="BackDoor.h" />
     <ClInclude Include="Chair.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="FrontDoor.h" />
     <ClInclude Include="FrontMidLight.h" />
     <ClInclude Include="GlobalConfig.h" />
     <ClInclude Include="Light.h" />
@@ -113,8 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjustableLight.cpp" />
+    <ClCompile Include="BackDoor.cpp" />
     <ClCompile Include="Chair.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="FrontDoor.cpp" />
     <ClCompile Include="FrontMidLight.cpp" />
     <ClCompile Include="GlobalConfig.cpp" />
     <ClCompile Include="Light.cpp" />

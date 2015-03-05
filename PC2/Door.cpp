@@ -22,8 +22,6 @@ namespace mxnavi {
 Door::Door(void)
 {
 	serial_command.data[3] = 0x01;
-	serial_command.data[4] = 0x32;
-	part_name = "front-door";
 }
 
 
@@ -43,7 +41,7 @@ void Door::make_serial_command(const std::string& action)
 	serial_command.data[3] = 0x01;
 	if (action == "open") {
 		current_command = ON_ACTION;
-		//serial_command.data[5] = ON_ACTION;
+		serial_command.data[5] = ON_ACTION;
 	} else if (action == "off1") {
 		current_command = OFF1_ACTION;
 		//serial_command.data[5] = OFF1_ACTION;
@@ -52,7 +50,7 @@ void Door::make_serial_command(const std::string& action)
 		//serial_command.data[5] = OFF2_ACTION;
 	} else if (action == "close") {
 		current_command = OFF1_ACTION;
-		//serial_command.data[5] = OFF1_ACTION;
+		serial_command.data[5] = OFF1_ACTION;
 	} else if (action == "stop") {
 		current_command = STOP_ACTION;
 		serial_command.data[5] = STOP_ACTION;
@@ -66,7 +64,7 @@ void Door::make_net_command(unsigned int command)
 	Json::FastWriter writer;
 	Json::Value value;
 	switch(command) {
-	case 0x04:
+	case 0x05:
 		value["result"] = "fault";
 		value["part"] = part_name;
 		net_command = writer.write(value);
@@ -111,10 +109,13 @@ bool Door::do_reply_action(unsigned int status)
 			current_command = OFF2_ACTION;
 			return true;
 		case OFF2_ACTION:
+			/*
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
 			return true;
+			*/
+			return false;
 		default:
 			break;
 		}
@@ -138,11 +139,11 @@ bool Door::do_reply_action(unsigned int status)
 			break;
 		}
 		break;
-	case ACT_FALSE:
+	case FAULT:
 		serial_command.data[3] = 0x00;
 		serial_command.data[5] = RESET_ACTION;
 		current_command = RESET_ACTION;
-		break;
+		return true;
 	default:
 		break;
 	}

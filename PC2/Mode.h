@@ -15,6 +15,7 @@ public:
 protected:
 	std::vector<std::shared_ptr<Part> > part_ptr_container;
 	std::vector<std::string> action_container;
+
 	std::string mode_name;
 };
 

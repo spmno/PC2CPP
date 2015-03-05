@@ -99,6 +99,12 @@
     <ClInclude Include="ModeManager.h">
       <Filter>mode</Filter>
     </ClInclude>
+    <ClInclude Include="FrontDoor.h">
+      <Filter>part</Filter>
+    </ClInclude>
+    <ClInclude Include="BackDoor.h">
+      <Filter>part</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="ModeManager.cpp">
       <Filter>mode</Filter>
+    </ClCompile>
+    <ClCompile Include="BackDoor.cpp">
+      <Filter>part</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontDoor.cpp">
+      <Filter>part</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
