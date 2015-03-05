@@ -1,1 +1,11 @@
-{ "serial":[{"COM21":{"baudrate":115200, "status":"on", "parts":["front-mid-light","back-light", "adjustable-light"]}}, {"COM11":{"baudrate":9600, "status":"on", "parts":["chair"]}}, {"COM19":{"baudrate":115200, "status":"off", "parts":["front-door"]}}]}
+{ "serial":
+  [
+    {"COM7":{"baudrate":115200, "status":"on", "parts":["front-door"]}}, 
+	{"COM11":{"baudrate":9600, "status":"off", "parts":["chair"]}}, 
+	{"COM23":{"baudrate":115200, "status":"on", "parts":["back-door"]}}
+  ],
+  "mode":
+  [
+    {"name":"near-car", "actions":[{"front-door":"open"}, {"front-mid-light":"on"}]}
+  ]
+}
