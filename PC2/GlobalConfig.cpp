@@ -50,7 +50,7 @@ bool GlobalConfig::init()
 						on_serial_port_container[port_name] = serialport;
 					}
 				}
-				/*
+				
 				ModeManager &mode_manager = ModeManager::get_instance();
 				const Json::Value mode_array_value = value["mode"];
 				for (auto mode : mode_array_value) {
@@ -64,7 +64,7 @@ bool GlobalConfig::init()
 						mode_ptr->add_part_action(part_ptr, action[part_name].asString());
 					}
 				}
-				*/
+				
 			} else {
 				LOG_ERROR << "parse config file error!";
 				return false;

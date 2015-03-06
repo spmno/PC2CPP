@@ -16,6 +16,7 @@ struct SerialCommand
 typedef enum _ACK_KIND {
 	UPLOAD_TO_NET,
 	ACTION_TO_CONTROLLER,
+	EXCEPTION_ACTION,
 } AckKind;
 
 class Part

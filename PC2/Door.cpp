@@ -6,9 +6,9 @@
 namespace mxnavi {
 
 //action
-#define ON_ACTION		0x02
+#define ON_ACTION		0x01
 #define OFF1_ACTION		0x00
-#define OFF2_ACTION		0x01
+#define OFF2_ACTION		0x02
 #define STOP_ACTION		0x03
 #define RESET_ACTION	0x04
 
@@ -18,6 +18,7 @@ namespace mxnavi {
 #define POSITION3		0x03
 #define FAULT			0x04
 #define ACT_FALSE		0x05
+#define EXCEPTION_ACT	0x06
 
 Door::Door(void)
 {
@@ -143,6 +144,11 @@ bool Door::do_reply_action(unsigned int status)
 		serial_command.data[3] = 0x00;
 		serial_command.data[5] = RESET_ACTION;
 		current_command = RESET_ACTION;
+		return true;
+	case EXCEPTION_ACT:
+		serial_command.data[3] = 0x00;
+		serial_command.data[5] = ON_ACTION;
+		current_command = ON_ACTION;
 		return true;
 	default:
 		break;
