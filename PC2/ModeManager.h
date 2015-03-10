@@ -15,14 +15,20 @@ public:
 		return mode_manager;
 	}
 	~ModeManager(void);
+	/*
 	void add_mode(std::string &mode_name, std::shared_ptr<Mode> mode_ptr)
 	{
 		mode_container[mode_name] = mode_ptr;
 	}
+	*/
+	void add_mode(std::string &mode_name, Mode &mode)
+	{
+		mode_container[mode_name] = mode;
+	}
 	void do_mode(std::string &mode_name);
 private:
 	ModeManager(void);
-	std::map<std::string, std::shared_ptr<Mode> > mode_container;
+	std::map<std::string, Mode> mode_container;
 };
 
 }

@@ -15,7 +15,7 @@ std::shared_ptr<Mode> ModeFactory::create_mode(std::string &mode_name)
 {
 	if (mode_name == "near-car") {
 		return std::make_shared<NearCarMode>();
-	}
+	} 
 	return nullptr;
 }
 

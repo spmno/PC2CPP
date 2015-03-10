@@ -2,10 +2,10 @@
   [
     {"COM7":{"baudrate":115200, "status":"on", "parts":["front-door"]}}, 
 	{"COM11":{"baudrate":9600, "status":"off", "parts":["chair"]}}, 
-	{"COM23":{"baudrate":115200, "status":"on", "parts":["back-door"]}}
+	{"COM23":{"baudrate":115200, "status":"off", "parts":["back-door"]}}
   ],
   "mode":
   [
-    {"name":"near-car", "actions":[{"front-door":"open"}, {"front-mid-light":"on"}]}
+    {"name":"open-the-door", "actions":[{"front-door":"open", "sleep":5}]}
   ]
 }

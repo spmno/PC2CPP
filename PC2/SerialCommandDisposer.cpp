@@ -4,6 +4,7 @@
 #include "PartFactory.h"
 #include "NetServer.h"
 #include "SerialPortManager.h"
+#include "MXLogger.h"
 
 namespace mxnavi {
 
@@ -21,6 +22,13 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 	PartFactory &part_factory = PartFactory::get_instance();
 	unsigned char part = command[4];
 	std::shared_ptr<Part> &part_ptr = part_factory.createPart(part);
+
+	if (!part_ptr) {
+		//MessageBox(NULL, L"´íÎó´®¿ÚÊý¾Ý", NULL, MB_OK|MB_TOPMOST);
+		return;
+		ExitProcess(-1);
+	}
+
 	unsigned int command_section = command[7];
 
 	std::mutex mu;

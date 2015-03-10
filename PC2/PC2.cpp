@@ -28,7 +28,11 @@ void updateNetFunction(string& content)
 		if (value["type"].asString() == "init") {
 			return;
 		} else if (value["type"].asString() == "single") {
-			std::shared_ptr<Part> part_ptr = part_factory.createPart(value["part"].asString());
+			std::shared_ptr<Part> &part_ptr = part_factory.createPart(value["part"].asString());
+			if (!part_ptr) {
+				MessageBox(NULL, L"²¿¼þ´íÎó", NULL, MB_OK|MB_TOPMOST);
+				return;
+			}
 			part_ptr->make_serial_command(value["action"].asString());
 			bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
 			if (!ret) {
@@ -36,7 +40,7 @@ void updateNetFunction(string& content)
 			}
 		} else {
 			ModeManager &mode_manager = ModeManager::get_instance();
-			mode_manager.do_mode(value["name"].asString());
+			mode_manager.do_mode(value["action"].asString());
 		}
 
 	} else {

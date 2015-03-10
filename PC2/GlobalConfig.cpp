@@ -53,16 +53,29 @@ bool GlobalConfig::init()
 				
 				ModeManager &mode_manager = ModeManager::get_instance();
 				const Json::Value mode_array_value = value["mode"];
-				for (auto mode : mode_array_value) {
-					std::string mode_name = mode["name"].asString();
-					std::shared_ptr<Mode> mode_ptr = ModeFactory::create_mode(mode_name);
-					mode_manager.add_mode(mode_name, mode_ptr);
-					const Json::Value action_array = mode["actions"];
+				for (auto mode_item : mode_array_value) {
+					std::string mode_name = mode_item["name"].asString();
+					LOG_DEBUG << "mode name: " << mode_name;
+					//std::shared_ptr<Mode> mode_ptr = ModeFactory::create_mode(mode_name);
+					Mode mode;
+					
+					const Json::Value action_array = mode_item["actions"];
 					for (auto action : action_array) {
-						std::string part_name = *action.getMemberNames().begin();
+						Json::Value::Members members = action.getMemberNames();
+						std::string part_name = *members.begin();
 						std::shared_ptr<Part> &part_ptr = PartFactory::get_instance().createPart(part_name);
-						mode_ptr->add_part_action(part_ptr, action[part_name].asString());
+						if (!part_ptr) {
+							MessageBox(NULL, L"²¿¼þ´íÎó", NULL, MB_OK|MB_TOPMOST);
+							ExitProcess(-1);
+						}
+						mode.add_part_action(part_ptr, action[part_name].asString());
+						LOG_DEBUG << "part: " << part_name << ", action" << action[part_name].asString();
+						if (members.size() > 1) {
+							int sleep_time = action["sleep"].asInt();
+							mode.add_sleep(part_name, sleep_time);
+						}
 					}
+					mode_manager.add_mode(mode_name, mode);
 				}
 				
 			} else {
