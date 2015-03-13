@@ -30,7 +30,8 @@ void Mode::do_mode()
 {
 	for (auto action : action_container) {
 		action.first->make_serial_command(action.second);
-		bool ret = SerialPortManager::get_instance().send_command(action.first->get_name(), action.first->get_command());
+		//bool ret = SerialPortManager::get_instance().send_command(action.first->get_name(), action.first->get_command());
+		bool ret = action.first->do_command();
 		if (!ret) {
 			LOG_ERROR << "write " << action.first->get_name() << " command failed!";
 		}

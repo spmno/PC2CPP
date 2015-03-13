@@ -43,17 +43,20 @@ void SerialCommandDisposer::dispose(const unsigned char* command)
 	if (part_ptr->get_ack_kind() == ACTION_TO_CONTROLLER) {
 		//receive the the command form the serail, dispose and send command to the serial
 		if (part_ptr->do_reply_action(command_section)) {
-			SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
 		}
 	} else if (part_ptr->get_ack_kind() == EXCEPTION_ACTION) {
 		// do the exception action
 		if (part_ptr->do_reply_action(command_section)) {
-			SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
 		}
 
 		//do the special case for the exception.
 		if (part_ptr->do_reply_action(6)) {
-			SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
 		}
 	} else {
 		// net upload kind case

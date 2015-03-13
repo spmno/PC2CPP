@@ -23,10 +23,11 @@ class Part
 {
 public:
 	Part(void);
-	virtual void make_serial_command(const std::string& part) = 0;
+	virtual void make_serial_command(const std::string& action) = 0;
 	virtual void make_net_command(unsigned int command) = 0;
 	virtual bool make_init_command() = 0;
 	virtual bool do_reply_action(unsigned int status) { return false; }
+	virtual bool do_command();
 	SerialCommand* get_command() { return &serial_command; }
 	std::string& get_net_command() { return net_command; }
 	AckKind get_ack_kind() { return ack_kind; }

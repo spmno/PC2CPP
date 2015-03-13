@@ -9,7 +9,7 @@ namespace mxnavi {
 
 AdjustableLight::AdjustableLight(void)
 {
-	serial_command.data[4] = 0x19;
+	
 }
 
 

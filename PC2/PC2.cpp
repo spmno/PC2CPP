@@ -34,7 +34,7 @@ void updateNetFunction(string& content)
 				return;
 			}
 			part_ptr->make_serial_command(value["action"].asString());
-			bool ret = SerialPortManager::get_instance().send_command(value["part"].asString(), part_ptr->get_command());
+			bool ret = part_ptr->do_command();
 			if (!ret) {
 				LOG_ERROR << "write " << value["part"].asString() << " command failed!";
 			}

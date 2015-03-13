@@ -22,6 +22,15 @@
     <Filter Include="mode">
       <UniqueIdentifier>{d2022654-0312-4d5b-8c2c-37bd17bb0219}</UniqueIdentifier>
     </Filter>
+    <Filter Include="part\light">
+      <UniqueIdentifier>{93f41581-0ad7-4aa5-9ee4-65f71e213b6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="part\Door">
+      <UniqueIdentifier>{c5076702-7ade-4002-b174-fc1a3a2d7241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="part\Seat">
+      <UniqueIdentifier>{69b385c8-80b5-4b79-b551-eb295a6f923b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,28 +66,13 @@
     <ClInclude Include="SerialPortManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Chair.h">
-      <Filter>part</Filter>
-    </ClInclude>
-    <ClInclude Include="FrontMidLight.h">
-      <Filter>part</Filter>
-    </ClInclude>
     <ClInclude Include="GlobalConfig.h">
-      <Filter>part</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
       <Filter>part</Filter>
     </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>part</Filter>
     </ClInclude>
     <ClInclude Include="PartFactory.h">
-      <Filter>part</Filter>
-    </ClInclude>
-    <ClInclude Include="AdjustableLight.h">
-      <Filter>part</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
       <Filter>part</Filter>
     </ClInclude>
     <ClInclude Include="SerialCommandDisposer.h">
@@ -99,11 +93,65 @@
     <ClInclude Include="ModeManager.h">
       <Filter>mode</Filter>
     </ClInclude>
-    <ClInclude Include="FrontDoor.h">
+    <ClInclude Include="Light.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="AdjustableLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontMidLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="SideAtmosphereLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="ThresholdAtmosphereLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontSideLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontLogoLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="BackLogoLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="BackMidLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="BackSideLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaPlayer.h">
       <Filter>part</Filter>
     </ClInclude>
     <ClInclude Include="BackDoor.h">
-      <Filter>part</Filter>
+      <Filter>part\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>part\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontDoor.h">
+      <Filter>part\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="Seat.h">
+      <Filter>part\Seat</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverSeat.h">
+      <Filter>part\Seat</Filter>
+    </ClInclude>
+    <ClInclude Include="CoDriverSeat.h">
+      <Filter>part\Seat</Filter>
+    </ClInclude>
+    <ClInclude Include="IrisRecognitionDoor.h">
+      <Filter>part\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="TailDoor.h">
+      <Filter>part\Door</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,25 +188,10 @@
     <ClCompile Include="SerialPortManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Chair.cpp">
-      <Filter>part</Filter>
-    </ClCompile>
-    <ClCompile Include="FrontMidLight.cpp">
-      <Filter>part</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>part</Filter>
-    </ClCompile>
     <ClCompile Include="Part.cpp">
       <Filter>part</Filter>
     </ClCompile>
     <ClCompile Include="PartFactory.cpp">
-      <Filter>part</Filter>
-    </ClCompile>
-    <ClCompile Include="AdjustableLight.cpp">
-      <Filter>part</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
       <Filter>part</Filter>
     </ClCompile>
     <ClCompile Include="SerialCommandDisposer.cpp">
@@ -179,11 +212,62 @@
     <ClCompile Include="ModeManager.cpp">
       <Filter>mode</Filter>
     </ClCompile>
-    <ClCompile Include="BackDoor.cpp">
+    <ClCompile Include="Light.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="AdjustableLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontMidLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="SideAtmosphereLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="ThresholdAtmosphereLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontSideLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontLogoLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="BackLogoLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="BackMidLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="BackSideLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaPlayer.cpp">
       <Filter>part</Filter>
     </ClCompile>
+    <ClCompile Include="BackDoor.cpp">
+      <Filter>part\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>part\Door</Filter>
+    </ClCompile>
     <ClCompile Include="FrontDoor.cpp">
-      <Filter>part</Filter>
+      <Filter>part\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="Seat.cpp">
+      <Filter>part\Seat</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverSeat.cpp">
+      <Filter>part\Seat</Filter>
+    </ClCompile>
+    <ClCompile Include="CoDriverSeat.cpp">
+      <Filter>part\Seat</Filter>
+    </ClCompile>
+    <ClCompile Include="IrisRecognitionDoor.cpp">
+      <Filter>part\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="TailDoor.cpp">
+      <Filter>part\Door</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,5 +286,10 @@
     <None Include="src\lib_json\version.h.in">
       <Filter>json</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PC2.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

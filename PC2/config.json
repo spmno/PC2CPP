@@ -1,11 +1,11 @@
 { "serial":
   [
-    {"COM7":{"baudrate":115200, "status":"on", "parts":["front-door"]}}, 
+    {"COM3":{"baudrate":115200, "status":"on", "parts":["side-atmosphere-light"]}}, 
 	{"COM11":{"baudrate":9600, "status":"off", "parts":["chair"]}}, 
 	{"COM23":{"baudrate":115200, "status":"off", "parts":["back-door"]}}
   ],
   "mode":
   [
-    {"name":"open-the-door", "actions":[{"front-door":"open", "sleep":5}]}
+    {"name":"open-the-door", "actions":[{"side-atmosphere-light":"1:0:200:200:200:200"}]}
   ]
 }

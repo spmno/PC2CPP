@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Part.h"
+#include "SerialPortManager.h"
 
 namespace mxnavi {
 
@@ -28,6 +29,11 @@ Part::Part(void)
 
 Part::~Part(void)
 {
+}
+
+bool Part::do_command() 
+{
+	return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 }
 
 }

@@ -46,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>E:\code\C++\boost_1_57_0;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;D:\Tools\opencv\build\include;D:\Tools\lua\5.1\include;E:\Qt5.0.0-MSVC2012-x86\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\code\C++\opencv\opencv\build\include;E:\code\C++\boost_1_57_0;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(VCInstallDir)PlatformSDK\lib;$(VCInstallDir)PlatformSDK\common\lib;E:\code\C++\boost_1_57_0\stage\lib;D:\Tools\opencv-build\lib\Release;D:\Tools\lua\5.1\lib;E:\Qt5.0.0-MSVC2012-x86\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -56,12 +56,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\library\opencv\opencv\build\include;$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_core300d.lib;opencv_videoio300d.lib;opencv_highgui300d.lib;opencv_imgproc300d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\library\opencv\opencv\sources\build\lib\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,13 +75,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\library\opencv\opencv\build\include;$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>E:\library\opencv\opencv\sources\build\lib\Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_core300.lib;opencv_videoio300.lib;opencv_highgui300.lib;opencv_imgproc300.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -88,12 +92,21 @@
   <ItemGroup>
     <ClInclude Include="AdjustableLight.h" />
     <ClInclude Include="BackDoor.h" />
-    <ClInclude Include="Chair.h" />
+    <ClInclude Include="BackLogoLight.h" />
+    <ClInclude Include="BackMidLight.h" />
+    <ClInclude Include="BackSideLight.h" />
+    <ClInclude Include="CoDriverSeat.h" />
+    <ClInclude Include="IrisRecognitionDoor.h" />
+    <ClInclude Include="Seat.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="DriverSeat.h" />
     <ClInclude Include="FrontDoor.h" />
+    <ClInclude Include="FrontLogoLight.h" />
     <ClInclude Include="FrontMidLight.h" />
+    <ClInclude Include="FrontSideLight.h" />
     <ClInclude Include="GlobalConfig.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="MediaPlayer.h" />
     <ClInclude Include="Mode.h" />
     <ClInclude Include="ModeFactory.h" />
     <ClInclude Include="ModeManager.h" />
@@ -104,24 +117,37 @@
     <ClInclude Include="Part.h" />
     <ClInclude Include="PartFactory.h" />
     <ClInclude Include="ReadSerialTask.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SerialCommandDisposer.h" />
     <ClInclude Include="SerialPort.h" />
     <ClInclude Include="SerialPortManager.h" />
+    <ClInclude Include="SideAtmosphereLight.h" />
     <ClInclude Include="src\lib_json\json_batchallocator.h" />
     <ClInclude Include="src\lib_json\json_tool.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TailDoor.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ThresholdAtmosphereLight.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjustableLight.cpp" />
     <ClCompile Include="BackDoor.cpp" />
-    <ClCompile Include="Chair.cpp" />
+    <ClCompile Include="BackLogoLight.cpp" />
+    <ClCompile Include="BackMidLight.cpp" />
+    <ClCompile Include="BackSideLight.cpp" />
+    <ClCompile Include="CoDriverSeat.cpp" />
+    <ClCompile Include="IrisRecognitionDoor.cpp" />
+    <ClCompile Include="Seat.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DriverSeat.cpp" />
     <ClCompile Include="FrontDoor.cpp" />
+    <ClCompile Include="FrontLogoLight.cpp" />
     <ClCompile Include="FrontMidLight.cpp" />
+    <ClCompile Include="FrontSideLight.cpp" />
     <ClCompile Include="GlobalConfig.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="MediaPlayer.cpp" />
     <ClCompile Include="Mode.cpp" />
     <ClCompile Include="ModeFactory.cpp" />
     <ClCompile Include="ModeManager.cpp" />
@@ -136,6 +162,7 @@
     <ClCompile Include="SerialCommandDisposer.cpp" />
     <ClCompile Include="SerialPort.cpp" />
     <ClCompile Include="SerialPortManager.cpp" />
+    <ClCompile Include="SideAtmosphereLight.cpp" />
     <ClCompile Include="src\lib_json\json_reader.cpp" />
     <ClCompile Include="src\lib_json\json_value.cpp" />
     <ClCompile Include="src\lib_json\json_writer.cpp" />
@@ -143,6 +170,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TailDoor.cpp" />
+    <ClCompile Include="ThresholdAtmosphereLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\lib_json\json_internalarray.inl" />
@@ -150,6 +179,9 @@
     <None Include="src\lib_json\json_valueiterator.inl" />
     <None Include="src\lib_json\sconscript" />
     <None Include="src\lib_json\version.h.in" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PC2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
