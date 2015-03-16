@@ -53,6 +53,7 @@ void Door::make_serial_command(const std::string& action)
 		current_command = OFF1_ACTION;
 		serial_command.data[5] = OFF1_ACTION;
 	} else if (action == "stop") {
+		serial_command.data[3] = 0x00;
 		current_command = STOP_ACTION;
 		serial_command.data[5] = STOP_ACTION;
 	}

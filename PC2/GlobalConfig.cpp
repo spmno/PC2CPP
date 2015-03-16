@@ -8,7 +8,6 @@
 #include "SerialPort.h"
 #include "SerialPortManager.h"
 #include "ModeManager.h"
-#include "ModeFactory.h"
 #include "PartFactory.h"
 
 namespace mxnavi {
