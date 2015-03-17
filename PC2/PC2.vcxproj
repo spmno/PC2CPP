@@ -108,10 +108,8 @@
     <ClInclude Include="Light.h" />
     <ClInclude Include="MediaPlayer.h" />
     <ClInclude Include="Mode.h" />
-    <ClInclude Include="ModeFactory.h" />
     <ClInclude Include="ModeManager.h" />
     <ClInclude Include="MXLogger.h" />
-    <ClInclude Include="NearCarMode.h" />
     <ClInclude Include="NetReader.h" />
     <ClInclude Include="NetServer.h" />
     <ClInclude Include="Part.h" />
@@ -149,10 +147,8 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="MediaPlayer.cpp" />
     <ClCompile Include="Mode.cpp" />
-    <ClCompile Include="ModeFactory.cpp" />
     <ClCompile Include="ModeManager.cpp" />
     <ClCompile Include="MXLogger.cpp" />
-    <ClCompile Include="NearCarMode.cpp" />
     <ClCompile Include="NetReader.cpp" />
     <ClCompile Include="NetServer.cpp" />
     <ClCompile Include="Part.cpp" />

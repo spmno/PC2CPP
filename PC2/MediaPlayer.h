@@ -1,6 +1,8 @@
 #pragma once
 #include "part.h"
 #include <string>
+#include <condition_variable>
+#include <mutex>
 
 namespace mxnavi {
 
@@ -17,7 +19,11 @@ public:
 private:
 	std::string current_action;
 	static void play_video();
-	static bool play_flag;
+	static bool exit_flag;
+	static bool pause_flag;
+	static bool playing_flag;
+	static std::condition_variable pause_condition;
+	static std::mutex pause_mutex;
 };
 
 }

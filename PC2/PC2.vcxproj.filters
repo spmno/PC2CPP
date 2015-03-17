@@ -84,12 +84,6 @@
     <ClInclude Include="Mode.h">
       <Filter>mode</Filter>
     </ClInclude>
-    <ClInclude Include="NearCarMode.h">
-      <Filter>mode</Filter>
-    </ClInclude>
-    <ClInclude Include="ModeFactory.h">
-      <Filter>mode</Filter>
-    </ClInclude>
     <ClInclude Include="ModeManager.h">
       <Filter>mode</Filter>
     </ClInclude>
@@ -201,12 +195,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Mode.cpp">
-      <Filter>mode</Filter>
-    </ClCompile>
-    <ClCompile Include="NearCarMode.cpp">
-      <Filter>mode</Filter>
-    </ClCompile>
-    <ClCompile Include="ModeFactory.cpp">
       <Filter>mode</Filter>
     </ClCompile>
     <ClCompile Include="ModeManager.cpp">

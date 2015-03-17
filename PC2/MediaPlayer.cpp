@@ -11,7 +11,11 @@ namespace mxnavi {
 using namespace cv;
 using namespace std;
 
-bool MediaPlayer::play_flag;
+bool MediaPlayer::exit_flag;
+bool MediaPlayer::pause_flag;
+bool MediaPlayer::playing_flag;
+std::condition_variable MediaPlayer::pause_condition;
+std::mutex MediaPlayer::pause_mutex;
 
 MediaPlayer::MediaPlayer(void)
 {
@@ -41,18 +45,28 @@ void MediaPlayer::make_net_command(unsigned int command)
 bool MediaPlayer::do_command()
 {
 	if (current_action == "play") {
-		thread play_thread(play_video);
-		play_thread.detach();
-	} else if (current_action == "stop") {
-		play_flag = false;
-	} else if (current_action == "pause") {
+		if (playing_flag) {
+			pause_flag = false;
+			pause_condition.notify_all();
+		} else {
+			playing_flag = true;
+			thread play_thread(play_video);
+			play_thread.detach();
+		}
 
+	} else if (current_action == "stop") {
+		exit_flag = true;
+	} else if (current_action == "pause") {
+		pause_flag = true;
+	} else if (current_action == "exit") {
+		pause_condition.notify_all();
 	}
 	return true;
 }
 
 void MediaPlayer::play_video()
 {
+	std::unique_lock<std::mutex> lock(pause_mutex);
 	//打开视频文件：其实就是建立一个VideoCapture结构
     VideoCapture capture("D:/video.avi");
     //检测是否正常打开:成功打开时，isOpened返回ture
@@ -87,10 +101,8 @@ void MediaPlayer::play_video()
     double rate = capture.get(CAP_PROP_FPS);
     LOG_DEBUG << "帧率为:" << rate;
 
-
-
     //定义一个用来控制读取视频循环结束的变量
-    play_flag = true;
+    exit_flag = false;
     //承载每一帧的图像
     Mat frame;
     //显示每一帧的窗口
@@ -103,7 +115,7 @@ void MediaPlayer::play_video()
     //currentFrame是在循环体中控制读取到指定的帧后循环结束的变量
     long currentFrame = frameToStart;
 
-    while(play_flag)
+    while(!exit_flag)
     {
         //读取下一帧
         if(!capture.read(frame))
@@ -119,16 +131,23 @@ void MediaPlayer::play_video()
         //按下ESC或者到达指定的结束帧后退出读取视频
         if((char) c == 27 || currentFrame > frameToStop)
         {
-            play_flag = false;
+            exit_flag = true;
         }
         //按下按键后会停留在当前帧，等待下一次按键
         if( c >= 0)
         {
             waitKey(0);
         }
+
+		if (pause_flag) {
+			pause_condition.wait(lock);
+		}
+
         currentFrame++;
     
     }
+	playing_flag = false;
+	pause_condition.wait(lock);
     //关闭视频文件
 	destroyWindow("video");
     capture.release();
