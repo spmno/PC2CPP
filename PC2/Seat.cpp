@@ -47,11 +47,11 @@ void Seat::make_serial_command(const std::string& action)
 		serial_command.data[0] = 0xD5;
 	} else if (action == "waist-down") {
 		serial_command.data[0] = 0xD7;
-	} else if (action == "straight") {
+	} else if (action == "driving") {
 		serial_command.data[0] = 0x0E;
-	} else if (action == "half-lay-down") {
+	} else if (action == "leisure") {
 		serial_command.data[0] = 0x0F;
-	} else if (action == "lay-down") {
+	} else if (action == "sheep") {
 		serial_command.data[0] = 0x10;
 	}
 }

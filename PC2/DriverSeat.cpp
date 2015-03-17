@@ -4,6 +4,7 @@ namespace mxnavi {
 
 DriverSeat::DriverSeat(void)
 {
+	part_name = "driver-seat";
 }
 
 

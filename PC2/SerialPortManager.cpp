@@ -61,6 +61,7 @@ bool SerialPortManager::send_command(const string& part, const SerialCommand* co
 	LOG_DEBUG << __FUNCTION__;
 	std::string port_name = part_port_table[part];
 	if (serial_ports.find(port_name) == serial_ports.end()) {
+		LOG_DEBUG << "cann't find " << port_name;
 		return false;
 	}
 	for(int i = 0; i < command->count; ++i) {
