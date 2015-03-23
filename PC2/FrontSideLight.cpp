@@ -4,7 +4,7 @@ namespace mxnavi {
 
 FrontSideLight::FrontSideLight(void)
 {
-	part_name = "front-side-light";
+	part_name = "head-light";
 	serial_command.data[4] = 0x12;
 }
 

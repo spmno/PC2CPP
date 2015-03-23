@@ -91,12 +91,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjustableLight.h" />
+    <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="BackDoor.h" />
     <ClInclude Include="BackLogoLight.h" />
     <ClInclude Include="BackMidLight.h" />
     <ClInclude Include="BackSideLight.h" />
+    <ClInclude Include="BackWindowSheeting.h" />
     <ClInclude Include="CoDriverSeat.h" />
+    <ClInclude Include="CoDriverSeatMotor.h" />
+    <ClInclude Include="DriverSeatMotor.h" />
+    <ClInclude Include="FrontWindowSheeting.h" />
+    <ClInclude Include="IP.h" />
     <ClInclude Include="IrisRecognitionDoor.h" />
+    <ClInclude Include="LeftWindowSheeting.h" />
+    <ClInclude Include="Relay.h" />
+    <ClInclude Include="RightWindowSheeting.h" />
     <ClInclude Include="Seat.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DriverSeat.h" />
@@ -116,10 +125,13 @@
     <ClInclude Include="PartFactory.h" />
     <ClInclude Include="ReadSerialTask.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SeatMotor.h" />
     <ClInclude Include="SerialCommandDisposer.h" />
     <ClInclude Include="SerialPort.h" />
     <ClInclude Include="SerialPortManager.h" />
+    <ClInclude Include="Sheeting.h" />
     <ClInclude Include="SideAtmosphereLight.h" />
+    <ClInclude Include="SkyLightSheeting.h" />
     <ClInclude Include="src\lib_json\json_batchallocator.h" />
     <ClInclude Include="src\lib_json\json_tool.h" />
     <ClInclude Include="stdafx.h" />
@@ -127,15 +139,26 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThresholdAtmosphereLight.h" />
     <ClInclude Include="Util.h" />
+    <ClInclude Include="Wheel.h" />
+    <ClInclude Include="WheelHandle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdjustableLight.cpp" />
+    <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="BackDoor.cpp" />
     <ClCompile Include="BackLogoLight.cpp" />
     <ClCompile Include="BackMidLight.cpp" />
     <ClCompile Include="BackSideLight.cpp" />
+    <ClCompile Include="BackWindowSheeting.cpp" />
     <ClCompile Include="CoDriverSeat.cpp" />
+    <ClCompile Include="CoDriverSeatMotor.cpp" />
+    <ClCompile Include="DriverSeatMotor.cpp" />
+    <ClCompile Include="FrontWindowSheeting.cpp" />
+    <ClCompile Include="IP.cpp" />
     <ClCompile Include="IrisRecognitionDoor.cpp" />
+    <ClCompile Include="LeftWindowSheeting.cpp" />
+    <ClCompile Include="Relay.cpp" />
+    <ClCompile Include="RightWindowSheeting.cpp" />
     <ClCompile Include="Seat.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="DriverSeat.cpp" />
@@ -155,10 +178,13 @@
     <ClCompile Include="PartFactory.cpp" />
     <ClCompile Include="PC2.cpp" />
     <ClCompile Include="ReadSerialTask.cpp" />
+    <ClCompile Include="SeatMotor.cpp" />
     <ClCompile Include="SerialCommandDisposer.cpp" />
     <ClCompile Include="SerialPort.cpp" />
     <ClCompile Include="SerialPortManager.cpp" />
+    <ClCompile Include="Sheeting.cpp" />
     <ClCompile Include="SideAtmosphereLight.cpp" />
+    <ClCompile Include="SkyLightSheeting.cpp" />
     <ClCompile Include="src\lib_json\json_reader.cpp" />
     <ClCompile Include="src\lib_json\json_value.cpp" />
     <ClCompile Include="src\lib_json\json_writer.cpp" />
@@ -168,6 +194,8 @@
     </ClCompile>
     <ClCompile Include="TailDoor.cpp" />
     <ClCompile Include="ThresholdAtmosphereLight.cpp" />
+    <ClCompile Include="Wheel.cpp" />
+    <ClCompile Include="WheelHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\lib_json\json_internalarray.inl" />

@@ -98,7 +98,9 @@ bool NetServer::write(std::string& command)
 {
 	boost::system::error_code ignored_error;
 	for(auto socket : socket_container) {
-		socket->write_some(boost::asio::buffer(command), ignored_error);
+		if (socket->write_some(boost::asio::buffer(command), ignored_error) != command.size()) {
+			LOG_DEBUG << "write some failed";
+		}
 	}
 	return true;
 }

@@ -16,6 +16,11 @@
 #include "MediaPlayer.h"
 #include "TailDoor.h"
 #include "IrisRecognitionDoor.h"
+#include "DriverSeatMotor.h"
+#include "CoDriverSeatMotor.h"
+#include "IP.h"
+#include "Wheel.h"
+#include "WheelHandle.h"
 
 namespace mxnavi {
 
@@ -33,14 +38,14 @@ std::shared_ptr<Part> & PartFactory::createPart(unsigned int part_number)
 PartFactory::PartFactory(void)
 {
 	part_containner["front-mid-light"] = std::make_shared<FrontMidLight>();
-	part_containner["front-side-light"] = std::make_shared<FrontSideLight>();
-	part_containner["front-logo-light"] = std::make_shared<FrontLogoLight>();
+	part_containner["head-light"] = std::make_shared<FrontSideLight>();
+	part_containner["daytime-running-light"] = std::make_shared<FrontLogoLight>();
 	part_containner["back-mid-light"] = std::make_shared<BackMidLight>();
 	part_containner["back-side-light"] = std::make_shared<BackSideLight>();
 	part_containner["back-logo-light"] = std::make_shared<BackLogoLight>();
 	part_containner["front-door"] = std::make_shared<FrontDoor>();
 	part_containner["back-door"] = std::make_shared<BackDoor>();
-	part_containner["iris-recognition-door"] = std::make_shared<IrisRecognitionDoor>();
+	part_containner["iris-door"] = std::make_shared<IrisRecognitionDoor>();
 	part_containner["tail-door"] = std::make_shared<TailDoor>();
 	part_containner["driver-seat"] = std::make_shared<DriverSeat>();
 	part_containner["co-driver-seat"] = std::make_shared<CoDriverSeat>();
@@ -48,17 +53,24 @@ PartFactory::PartFactory(void)
 	part_containner["side-atmosphere-light"] = std::make_shared<SideAtmosphereLight>();
 	part_containner["threshold-atmosphere-light"] = std::make_shared<ThresholdAtmosphereLight>();
 	part_containner["media-player"] = std::make_shared<MediaPlayer>();
+	part_containner["driver-seat-motor"] = std::make_shared<DriverSeatMotor>();
+	part_containner["co-driver-seat-motor"] = std::make_shared<CoDriverSeatMotor>();
+	part_containner["ip"] = std::make_shared<IP>();
+	part_containner["wheel"] = std::make_shared<Wheel>();
+	part_containner["wheel-handle"] = std::make_shared<WheelHandle>();
 
 	part_relationship_table[0x11] = "front-mid-light";
 	part_relationship_table[0x32] = "front-door";
 	part_relationship_table[0x33] = "back-door";
 	part_relationship_table[0x19] = "side-atmosphere-light";
 	part_relationship_table[0x1a] = "threshold-atmosphere-light";
+	part_relationship_table[0x31] = "iris-door";
 }
 
 
 PartFactory::~PartFactory(void)
 {
+
 }
 
 }

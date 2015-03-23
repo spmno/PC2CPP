@@ -70,7 +70,7 @@ bool GlobalConfig::init()
 						mode.add_part_action(part_ptr, action[part_name].asString());
 						LOG_DEBUG << "part: " << part_name << ", action" << action[part_name].asString();
 						if (members.size() > 1) {
-							int sleep_time = action["sleep"].asInt();
+							float sleep_time = action["sleep"].asFloat();
 							mode.add_sleep(part_name, sleep_time);
 						}
 					}

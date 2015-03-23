@@ -31,6 +31,18 @@
     <Filter Include="part\Seat">
       <UniqueIdentifier>{69b385c8-80b5-4b79-b551-eb295a6f923b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="part\SeatMonitor">
+      <UniqueIdentifier>{0afb5bb7-75cf-411b-ab76-658731b81c7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="part\Wheel">
+      <UniqueIdentifier>{6f4960c5-fed7-4c06-8526-834d6c33443e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="part\Relay">
+      <UniqueIdentifier>{127477cb-391e-46ba-ba11-22498bee0fda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="part\Relay\Sheeting">
+      <UniqueIdentifier>{5daf54a2-82f5-4f36-a01c-6f2b898367b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -147,6 +159,48 @@
     <ClInclude Include="TailDoor.h">
       <Filter>part\Door</Filter>
     </ClInclude>
+    <ClInclude Include="SeatMotor.h">
+      <Filter>part\SeatMonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverSeatMotor.h">
+      <Filter>part\SeatMonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="CoDriverSeatMotor.h">
+      <Filter>part\SeatMonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="IP.h">
+      <Filter>part</Filter>
+    </ClInclude>
+    <ClInclude Include="Wheel.h">
+      <Filter>part\Wheel</Filter>
+    </ClInclude>
+    <ClInclude Include="WheelHandle.h">
+      <Filter>part\Wheel</Filter>
+    </ClInclude>
+    <ClInclude Include="Sheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="BackWindowSheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontWindowSheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftWindowSheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="RightWindowSheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyLightSheeting.h">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClInclude>
+    <ClInclude Include="Relay.h">
+      <Filter>part\Relay</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem.h">
+      <Filter>part\Relay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -206,9 +260,6 @@
     <ClCompile Include="AdjustableLight.cpp">
       <Filter>part\light</Filter>
     </ClCompile>
-    <ClCompile Include="FrontMidLight.cpp">
-      <Filter>part\light</Filter>
-    </ClCompile>
     <ClCompile Include="SideAtmosphereLight.cpp">
       <Filter>part\light</Filter>
     </ClCompile>
@@ -256,6 +307,51 @@
     </ClCompile>
     <ClCompile Include="TailDoor.cpp">
       <Filter>part\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="SeatMotor.cpp">
+      <Filter>part\SeatMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverSeatMotor.cpp">
+      <Filter>part\SeatMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="CoDriverSeatMotor.cpp">
+      <Filter>part\SeatMonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="IP.cpp">
+      <Filter>part</Filter>
+    </ClCompile>
+    <ClCompile Include="Wheel.cpp">
+      <Filter>part\Wheel</Filter>
+    </ClCompile>
+    <ClCompile Include="WheelHandle.cpp">
+      <Filter>part\Wheel</Filter>
+    </ClCompile>
+    <ClCompile Include="Relay.cpp">
+      <Filter>part\Relay</Filter>
+    </ClCompile>
+    <ClCompile Include="Sheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="BackWindowSheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontWindowSheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftWindowSheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="RightWindowSheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontMidLight.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyLightSheeting.cpp">
+      <Filter>part\Relay\Sheeting</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSystem.cpp">
+      <Filter>part\Relay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

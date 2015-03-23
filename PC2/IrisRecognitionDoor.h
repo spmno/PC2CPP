@@ -9,6 +9,7 @@ class IrisRecognitionDoor :
 public:
 	IrisRecognitionDoor(void);
 	~IrisRecognitionDoor(void);
+	virtual bool do_reply(unsigned int command);
 };
 
 }

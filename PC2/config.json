@@ -1,11 +1,12 @@
 { "serial":
   [
-    {"COM3":{"baudrate":115200, "status":"on", "parts":["side-atmosphere-light"]}}, 
-	{"COM11":{"baudrate":9600, "status":"off", "parts":["chair"]}}, 
-	{"COM23":{"baudrate":115200, "status":"off", "parts":["back-door"]}}
+    {"COM3":{"baudrate":115200, "status":"off", "parts":["side-atmosphere-light"]}}, 
+	{"COM25":{"baudrate":9600, "status":"on", "parts":["wheel", "wheel-handle"]}}, 
+	{"COM24":{"baudrate":115200, "status":"off", "parts":["iris-door"]}}
   ],
   "mode":
   [
-    {"name":"open-the-door", "actions":[{"side-atmosphere-light":"1:0:200:200:200:200"}]}
+    {"name":"open-the-door", "actions":[{"side-atmosphere-light":"1:0:200:200:200:200"}, "front-door":"open", "back-door":"close"]},
+	{"name":"iris", "actions":[]}
   ]
 }

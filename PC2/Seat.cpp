@@ -51,7 +51,7 @@ void Seat::make_serial_command(const std::string& action)
 		serial_command.data[0] = 0x0E;
 	} else if (action == "leisure") {
 		serial_command.data[0] = 0x0F;
-	} else if (action == "sheep") {
+	} else if (action == "sleep") {
 		serial_command.data[0] = 0x10;
 	}
 }
@@ -60,4 +60,5 @@ void Seat::make_net_command(unsigned int command)
 {
 
 }
+
 }

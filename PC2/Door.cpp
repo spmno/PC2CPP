@@ -1,24 +1,13 @@
 #include <json/json.h>
 #include "Door.h"
 #include "MXLogger.h"
+#include "NetServer.h"
+#include "SerialPortManager.h"
 
 
 namespace mxnavi {
 
-//action
-#define ON_ACTION		0x01
-#define OFF1_ACTION		0x00
-#define OFF2_ACTION		0x02
-#define STOP_ACTION		0x03
-#define RESET_ACTION	0x04
 
-//status
-#define POSITION1		0x01
-#define POSITION2		0x02
-#define POSITION3		0x03
-#define FAULT			0x04
-#define ACT_FALSE		0x05
-#define EXCEPTION_ACT	0x06
 
 Door::Door(void)
 {
@@ -58,25 +47,12 @@ void Door::make_serial_command(const std::string& action)
 		serial_command.data[5] = STOP_ACTION;
 	}
 	
-	ack_kind = ACTION_TO_CONTROLLER;
 }
 
-void Door::make_net_command(unsigned int command)
+bool Door::do_reply(unsigned int command)
 {
-	Json::FastWriter writer;
-	Json::Value value;
-	switch(command) {
-	case 0x05:
-		value["result"] = "fault";
-		value["part"] = part_name;
-		net_command = writer.write(value);
-		break;
-	}
-}
 
-bool Door::do_reply_action(unsigned int status) 
-{
-	switch (status)
+	switch (command)
 	{
 	case POSITION1:
 		switch (current_command)
@@ -85,12 +61,12 @@ bool Door::do_reply_action(unsigned int status)
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		case OFF1_ACTION:
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = OFF1_ACTION;
 			current_command = OFF1_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		case OFF2_ACTION:
 			break;
 		default:
@@ -104,12 +80,12 @@ bool Door::do_reply_action(unsigned int status)
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = ON_ACTION;
 			current_command = ON_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		case OFF1_ACTION:
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = OFF2_ACTION;
 			current_command = OFF2_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		case OFF2_ACTION:
 			/*
 			serial_command.data[3] = 0x00;
@@ -129,14 +105,14 @@ bool Door::do_reply_action(unsigned int status)
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = ON_ACTION;
 			current_command = ON_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		case OFF1_ACTION:
 			break;
 		case OFF2_ACTION:
 			serial_command.data[3] = 0x00;
 			serial_command.data[5] = STOP_ACTION;
 			current_command = STOP_ACTION;
-			return true;
+			return SerialPortManager::get_instance().send_command(part_name, &serial_command);
 		default:
 			break;
 		}
@@ -145,7 +121,11 @@ bool Door::do_reply_action(unsigned int status)
 		serial_command.data[3] = 0x00;
 		serial_command.data[5] = RESET_ACTION;
 		current_command = RESET_ACTION;
-		return true;
+		return SerialPortManager::get_instance().send_command(part_name, &serial_command);
+	case ACT_FALSE:
+		make_net_command(command);
+		NetServer::get_instance().write(get_net_command());
+		break;
 	case EXCEPTION_ACT:
 		serial_command.data[3] = 0x00;
 		serial_command.data[5] = ON_ACTION;
@@ -155,6 +135,52 @@ bool Door::do_reply_action(unsigned int status)
 		break;
 	}
 	return false;
+	/*
+	if (part_ptr->get_ack_kind() == ACTION_TO_CONTROLLER) {
+		//receive the the command form the serail, dispose and send command to the serial
+		if (part_ptr->do_reply_action(command_section)) {
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
+		}
+	} else if (part_ptr->get_ack_kind() == EXCEPTION_ACTION) {
+		// do the exception action
+		if (part_ptr->do_reply_action(command_section)) {
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
+		}
+
+		//do the special case for the exception.
+		if (part_ptr->do_reply_action(6)) {
+			//SerialPortManager::get_instance().send_command(part_ptr->get_name(), part_ptr->get_command());
+			part_ptr->do_command();
+		}
+	} else {
+		// net upload kind case
+		part_ptr->make_net_command(command_section);
+		NetServer::get_instance().write(part_ptr->get_net_command());
+	}
+	*/
 }
+
+void Door::make_net_command(unsigned int command)
+{
+	Json::FastWriter writer;
+	Json::Value value;
+	switch(command) {
+	case ACT_FALSE:
+		value["result"] = "fault";
+		value["part"] = part_name;
+		net_command = writer.write(value);
+		break;
+	case UPLOAD_IRIS:
+		value["result"] = "iris-open";
+		value["part"] = part_name;
+		net_command = writer.write(value);
+		break;
+	default:
+		break;
+	}
+}
+
 
 }
