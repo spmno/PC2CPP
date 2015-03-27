@@ -121,7 +121,6 @@
     <ClInclude Include="Mode.h" />
     <ClInclude Include="ModeManager.h" />
     <ClInclude Include="MXLogger.h" />
-    <ClInclude Include="NetReader.h" />
     <ClInclude Include="NetServer.h" />
     <ClInclude Include="Part.h" />
     <ClInclude Include="PartFactory.h" />
@@ -176,7 +175,6 @@
     <ClCompile Include="Mode.cpp" />
     <ClCompile Include="ModeManager.cpp" />
     <ClCompile Include="MXLogger.cpp" />
-    <ClCompile Include="NetReader.cpp" />
     <ClCompile Include="NetServer.cpp" />
     <ClCompile Include="Part.cpp" />
     <ClCompile Include="PartFactory.cpp" />

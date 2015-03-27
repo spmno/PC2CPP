@@ -21,7 +21,6 @@ public:
 		return serial_port_manager;
 	}
 	bool init();
-	static void read_task(std::string& port_name, SerialPortManager* self);
 	static void task_func(unsigned char data[]);
 	std::map<std::string, SerialPort>& get_port_container() { return serial_port_container; }
 	std::map<std::string, SerialPort>& get_on_port_container() { return on_serial_port_container; }

@@ -94,21 +94,6 @@ void SerialPortManager::task_func(unsigned char data[])
 	}
 }
 
-void SerialPortManager::read_task(std::string& port_name, SerialPortManager* self)
-{
-	unsigned char data[SERIAL_COMMAND_LENGTH];
-	while(true) {
-		self->serial_ports[port_name]->read_some(boost::asio::buffer(data, sizeof(data)));
-		for (auto callback : self->update_function_container) {
-			callback(data);
-		}
-		boost::format fmt("%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X");
-		for (int i = 0; i < SERIAL_COMMAND_LENGTH; ++i) {
-			fmt % (int)data[i];
-		}
-		LOG_DEBUG << "receive  " << fmt.str();
-	}
-}
 
 void SerialPortManager::addUpdateFunction(std::function<void (const unsigned char*)> function)
 {

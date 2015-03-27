@@ -69,9 +69,6 @@
     <ClInclude Include="MXLogger.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="NetReader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="SerialPort.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -228,9 +225,6 @@
       <Filter>json</Filter>
     </ClCompile>
     <ClCompile Include="MXLogger.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="NetReader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GlobalConfig.cpp">

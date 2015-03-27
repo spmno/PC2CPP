@@ -2,6 +2,8 @@
 #include <memory>
 #include <boost/asio.hpp>
 
+namespace mxnavi {
+
 class ReadSerialTask
 {
 public:
@@ -12,3 +14,4 @@ private:
 	std::string com_name;
 };
 
+}
