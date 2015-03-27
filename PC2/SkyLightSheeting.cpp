@@ -5,7 +5,7 @@ namespace mxnavi {
 SkyLightSheeting::SkyLightSheeting(void)
 {
 	part_name = "sky-light-sheeting";
-	serial_command.data[4] = 0x72;
+	serial_command.data[5] = 0x20;
 }
 
 

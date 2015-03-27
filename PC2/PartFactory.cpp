@@ -21,6 +21,14 @@
 #include "IP.h"
 #include "Wheel.h"
 #include "WheelHandle.h"
+#include "FrontWindowSheeting.h"
+#include "SkyLightSheeting.h"
+#include "LeftWindowSheeting.h"
+#include "RightWindowSheeting.h"
+#include "BackWindowSheeting.h"
+#include "AudioSystem.h"
+#include "FragranceLight.h"
+#include "IPAtmosphereLight.h"
 
 namespace mxnavi {
 
@@ -49,15 +57,21 @@ PartFactory::PartFactory(void)
 	part_containner["tail-door"] = std::make_shared<TailDoor>();
 	part_containner["driver-seat"] = std::make_shared<DriverSeat>();
 	part_containner["co-driver-seat"] = std::make_shared<CoDriverSeat>();
-	part_containner["adjustable-light"] = std::make_shared<AdjustableLight>();
 	part_containner["side-atmosphere-light"] = std::make_shared<SideAtmosphereLight>();
 	part_containner["threshold-atmosphere-light"] = std::make_shared<ThresholdAtmosphereLight>();
+	part_containner["ip-atmosphere-light"] = std::make_shared<IPAtmosphereLight>();
+	part_containner["fragrance-light"] = std::make_shared<FragranceLight>();
 	part_containner["media-player"] = std::make_shared<MediaPlayer>();
 	part_containner["driver-seat-motor"] = std::make_shared<DriverSeatMotor>();
 	part_containner["co-driver-seat-motor"] = std::make_shared<CoDriverSeatMotor>();
 	part_containner["ip"] = std::make_shared<IP>();
 	part_containner["wheel"] = std::make_shared<Wheel>();
 	part_containner["wheel-handle"] = std::make_shared<WheelHandle>();
+	part_containner["front-window-sheeting"] = std::make_shared<FrontWindowSheeting>();
+	part_containner["sky-light-sheeting"] = std::make_shared<SkyLightSheeting>();
+	part_containner["left-window-sheeting"] = std::make_shared<LeftWindowSheeting>();
+	part_containner["right-window-sheeting"] = std::make_shared<RightWindowSheeting>();
+	part_containner["back-window-sheeting"] = std::make_shared<BackWindowSheeting>();
 
 	part_relationship_table[0x11] = "front-mid-light";
 	part_relationship_table[0x32] = "front-door";

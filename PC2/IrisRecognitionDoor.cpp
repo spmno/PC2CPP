@@ -51,8 +51,8 @@ bool IrisRecognitionDoor::do_reply(unsigned int command)
 		{
 			//std::string mode_name = "iris";
 			//ModeManager::get_instance().do_mode(mode_name);
-			serial_command.data[3] = 0x01;
-			serial_command.data[5] = 0;
+			serial_command.data[3] = 0x00;
+			serial_command.data[5] = ON_ACTION;
 			current_command = ON_ACTION;
 			SerialPortManager::get_instance().send_command(part_name, &serial_command);
 			make_net_command(UPLOAD_IRIS);

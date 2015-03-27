@@ -11,7 +11,7 @@ namespace mxnavi {
 
 Door::Door(void)
 {
-	serial_command.data[3] = 0x01;
+	serial_command.data[3] = 0x00;
 }
 
 
@@ -28,14 +28,14 @@ bool Door::make_init_command()
 void Door::make_serial_command(const std::string& action) 
 {
 	LOG_DEBUG << __FUNCTION__;
-	serial_command.data[3] = 0x01;
+	serial_command.data[3] = 0x00;
 	if (action == "open") {
 		current_command = ON_ACTION;
 		serial_command.data[5] = ON_ACTION;
-	} else if (action == "off1") {
+	} else if (action == "close1") {
 		current_command = OFF1_ACTION;
 		//serial_command.data[5] = OFF1_ACTION;
-	} else if (action == "off2") {
+	} else if (action == "close2") {
 		current_command = OFF2_ACTION;
 		//serial_command.data[5] = OFF2_ACTION;
 	} else if (action == "close") {
@@ -121,9 +121,14 @@ bool Door::do_reply(unsigned int command)
 		serial_command.data[3] = 0x00;
 		serial_command.data[5] = RESET_ACTION;
 		current_command = RESET_ACTION;
-		return SerialPortManager::get_instance().send_command(part_name, &serial_command);
+		SerialPortManager::get_instance().send_command(part_name, &serial_command);
+		Sleep(100);
+		serial_command.data[3] = 0x00;
+		serial_command.data[5] = ON_ACTION;
+		current_command = ON_ACTION;
+		SerialPortManager::get_instance().send_command(part_name, &serial_command);
 	case ACT_FALSE:
-		make_net_command(command);
+		make_net_command(ACT_FALSE);
 		NetServer::get_instance().write(get_net_command());
 		break;
 	case EXCEPTION_ACT:

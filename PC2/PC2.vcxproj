@@ -100,8 +100,10 @@
     <ClInclude Include="CoDriverSeat.h" />
     <ClInclude Include="CoDriverSeatMotor.h" />
     <ClInclude Include="DriverSeatMotor.h" />
+    <ClInclude Include="FragranceLight.h" />
     <ClInclude Include="FrontWindowSheeting.h" />
     <ClInclude Include="IP.h" />
+    <ClInclude Include="IPAtmosphereLight.h" />
     <ClInclude Include="IrisRecognitionDoor.h" />
     <ClInclude Include="LeftWindowSheeting.h" />
     <ClInclude Include="Relay.h" />
@@ -153,8 +155,10 @@
     <ClCompile Include="CoDriverSeat.cpp" />
     <ClCompile Include="CoDriverSeatMotor.cpp" />
     <ClCompile Include="DriverSeatMotor.cpp" />
+    <ClCompile Include="FragranceLight.cpp" />
     <ClCompile Include="FrontWindowSheeting.cpp" />
     <ClCompile Include="IP.cpp" />
+    <ClCompile Include="IPAtmosphereLight.cpp" />
     <ClCompile Include="IrisRecognitionDoor.cpp" />
     <ClCompile Include="LeftWindowSheeting.cpp" />
     <ClCompile Include="Relay.cpp" />

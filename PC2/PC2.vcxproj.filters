@@ -201,6 +201,12 @@
     <ClInclude Include="AudioSystem.h">
       <Filter>part\Relay</Filter>
     </ClInclude>
+    <ClInclude Include="IPAtmosphereLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="FragranceLight.h">
+      <Filter>part\light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -344,14 +350,20 @@
     <ClCompile Include="RightWindowSheeting.cpp">
       <Filter>part\Relay\Sheeting</Filter>
     </ClCompile>
-    <ClCompile Include="FrontMidLight.cpp">
-      <Filter>part\Relay\Sheeting</Filter>
-    </ClCompile>
     <ClCompile Include="SkyLightSheeting.cpp">
       <Filter>part\Relay\Sheeting</Filter>
     </ClCompile>
     <ClCompile Include="AudioSystem.cpp">
       <Filter>part\Relay</Filter>
+    </ClCompile>
+    <ClCompile Include="FragranceLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="IPAtmosphereLight.cpp">
+      <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontMidLight.cpp">
+      <Filter>part\light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

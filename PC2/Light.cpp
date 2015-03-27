@@ -25,9 +25,11 @@ void Light::make_serial_command(const std::string& action)
 {
 	LOG_DEBUG << __FUNCTION__;
 	if (action == "on") {
-		serial_command.data[5] = 0x01;
-	} else if (action == "off") {
+		serial_command.data[5] = 0x02;
+	} else if (action == "twinkle") {
 		serial_command.data[5] = 0x00;
+	} else if (action == "on-gradually") {
+		serial_command.data[5] = 0x01;
 	} else if (action == "red-on") {
 		serial_command.data[5] = 0x11;
 	} else if (action == "red-off") {
