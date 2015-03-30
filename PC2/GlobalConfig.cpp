@@ -25,8 +25,11 @@ bool GlobalConfig::init()
 			Json::Reader reader;
 			Json::Value value;
 			SerialPortManager& serial_port_manager = SerialPortManager::get_instance();
+			// all port in the config file, include the off status's port
 			std::map<std::string, SerialPort>& serial_port_container = serial_port_manager.get_port_container();
+			// just port which status is on.
 			std::map<std::string, SerialPort>& on_serial_port_container = serial_port_manager.get_on_port_container();
+			// the relationship of port and part.
 			std::map<std::string, std::string>& part_port_table = serial_port_manager.get_part_port_table(); 
 			if (reader.parse(config_stream, value)) {
 				const Json::Value serial_array_value = value["serial"];
@@ -50,6 +53,7 @@ bool GlobalConfig::init()
 					}
 				}
 				
+				// mode configuration part
 				ModeManager &mode_manager = ModeManager::get_instance();
 				const Json::Value mode_array_value = value["mode"];
 				for (auto mode_item : mode_array_value) {
@@ -68,12 +72,13 @@ bool GlobalConfig::init()
 							ExitProcess(-1);
 						}
 						mode.add_part_action(part_ptr, action[part_name].asString());
-						LOG_DEBUG << "part: " << part_name << ", action" << action[part_name].asString();
+						LOG_DEBUG << "part: " << part_name << ", action: " << action[part_name].asString();
 						if (members.size() > 1) {
 							float sleep_time = action["sleep"].asFloat();
 							mode.add_sleep(part_name, sleep_time);
 						}
 					}
+					// add mode to mode manager
 					mode_manager.add_mode(mode_name, mode);
 				}
 				
@@ -81,6 +86,7 @@ bool GlobalConfig::init()
 				LOG_ERROR << "parse config file error!";
 				return false;
 			}
+			// catch all exception here
 		} catch(std::exception e) {
 			LOG_ERROR << e.what();
 			return false;
