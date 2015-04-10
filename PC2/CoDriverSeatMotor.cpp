@@ -4,7 +4,7 @@ namespace mxnavi {
 
 CoDriverSeatMotor::CoDriverSeatMotor(void)
 {
-	serial_command.data[3] = 0x28;
+	serial_command.data[4] = 0x28;
 	part_name = "co-driver-seat-motor";
 }
 

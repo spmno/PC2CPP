@@ -46,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>E:\code\C++\opencv\opencv\build\include;E:\code\C++\boost_1_57_0;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\code\C++\boost_1_57_0;$(VCInstallDir)PlatformSDK\include;$(VCInstallDir)PlatformSDK\common\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(VCInstallDir)PlatformSDK\lib;$(VCInstallDir)PlatformSDK\common\lib;E:\code\C++\boost_1_57_0\stage\lib;D:\Tools\opencv-build\lib\Release;D:\Tools\lua\5.1\lib;E:\Qt5.0.0-MSVC2012-x86\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -132,7 +132,9 @@
     <ClInclude Include="SerialPortManager.h" />
     <ClInclude Include="Sheeting.h" />
     <ClInclude Include="SideAtmosphereLight.h" />
+    <ClInclude Include="SidePanelLight.h" />
     <ClInclude Include="SkyLightSheeting.h" />
+    <ClInclude Include="SleepTimeManager.h" />
     <ClInclude Include="src\lib_json\json_batchallocator.h" />
     <ClInclude Include="src\lib_json\json_tool.h" />
     <ClInclude Include="stdafx.h" />
@@ -186,7 +188,9 @@
     <ClCompile Include="SerialPortManager.cpp" />
     <ClCompile Include="Sheeting.cpp" />
     <ClCompile Include="SideAtmosphereLight.cpp" />
+    <ClCompile Include="SidePanelLight.cpp" />
     <ClCompile Include="SkyLightSheeting.cpp" />
+    <ClCompile Include="SleepTimeManager.cpp" />
     <ClCompile Include="src\lib_json\json_reader.cpp" />
     <ClCompile Include="src\lib_json\json_value.cpp" />
     <ClCompile Include="src\lib_json\json_writer.cpp" />

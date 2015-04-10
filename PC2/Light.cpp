@@ -25,28 +25,18 @@ void Light::make_serial_command(const std::string& action)
 {
 	LOG_DEBUG << __FUNCTION__;
 	if (action == "on") {
-		serial_command.data[5] = 0x02;
-	} else if (action == "twinkle") {
+		serial_command.data[5] = 0x05;
+	} else if (action == "twinkle-off") {
 		serial_command.data[5] = 0x00;
-	} else if (action == "on-gradually") {
+	} else if (action == "twinkle") {
 		serial_command.data[5] = 0x01;
-	} else if (action == "red-on") {
-		serial_command.data[5] = 0x11;
-	} else if (action == "red-off") {
-		serial_command.data[5] = 0x12;
-	} else if (action == "green-on") {
-		serial_command.data[5] = 0x21;
-	} else if (action == "green-off") {
-		serial_command.data[5] = 0x22;
-	} else if (action == "blue-on") {
-		serial_command.data[5] = 0x31;
-	} else if (action == "blue-off") {
-		serial_command.data[5] = 0x32;
-	} else if (action == "mix-on") {
-		serial_command.data[5] = 0x41;
-	} else if (action == "mix-off") {
-		serial_command.data[5] = 0x42;
-	}
+	} else if (action == "on-gradually") {
+		serial_command.data[5] = 0x03;
+	} else if (action == "off-gradually") {
+		serial_command.data[5] = 0x02;
+	} else if (action == "off") {
+		serial_command.data[5] = 0x04;
+	} 
 }
 
 void Light::make_net_command(unsigned int command) 

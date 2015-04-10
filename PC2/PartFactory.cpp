@@ -29,6 +29,7 @@
 #include "AudioSystem.h"
 #include "FragranceLight.h"
 #include "IPAtmosphereLight.h"
+#include "SidePanelLight.h"
 
 namespace mxnavi {
 
@@ -57,6 +58,7 @@ PartFactory::PartFactory(void)
 	part_containner["tail-door"] = std::make_shared<TailDoor>();
 	part_containner["driver-seat"] = std::make_shared<DriverSeat>();
 	part_containner["co-driver-seat"] = std::make_shared<CoDriverSeat>();
+	part_containner["side-panel-light"] = std::make_shared<SideAtmosphereLight>();
 	part_containner["side-atmosphere-light"] = std::make_shared<SideAtmosphereLight>();
 	part_containner["threshold-atmosphere-light"] = std::make_shared<ThresholdAtmosphereLight>();
 	part_containner["ip-atmosphere-light"] = std::make_shared<IPAtmosphereLight>();

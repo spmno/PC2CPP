@@ -59,6 +59,7 @@ bool MediaPlayer::do_command()
 	} else if (current_action == "pause") {
 		pause_flag = true;
 	} else if (current_action == "exit") {
+		exit_flag = true;
 		pause_condition.notify_all();
 	}
 	return true;
@@ -147,7 +148,9 @@ void MediaPlayer::play_video()
     
     }
 	playing_flag = false;
-	pause_condition.wait(lock);
+	pause_flag = false;
+	if (!exit_flag)
+		pause_condition.wait(lock);
     //关闭视频文件
 	destroyWindow("video");
     capture.release();

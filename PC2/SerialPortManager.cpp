@@ -92,6 +92,8 @@ void SerialPortManager::task_func(unsigned char data[])
 	for (auto callback : update_function_container) {
 		callback(data);
 	}
+//	std::for_each(update_function_container.begin(), update_function_container.end(), 
+//		[=](std::function<void (const unsigned char*)> callback) { callback(data); });
 }
 
 

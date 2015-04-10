@@ -5,7 +5,7 @@ namespace mxnavi {
 
 IP::IP(void)
 {
-	serial_command.data[3] = 0x41;
+	serial_command.data[4] = 0x41;
 	part_name = "ip";
 }
 
