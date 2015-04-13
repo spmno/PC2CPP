@@ -65,7 +65,16 @@ bool GlobalConfig::init()
 					const Json::Value action_array = mode_item["actions"];
 					for (auto action : action_array) {
 						Json::Value::Members members = action.getMemberNames();
+						
 						std::string part_name = *members.begin();
+						if (members.size() > 1) {
+							if (part_name == "sleep") {
+								part_name = members[1];
+							}
+							float sleep_time = action["sleep"].asFloat();
+							mode.add_sleep(part_name, sleep_time);
+						} 						
+						
 						std::shared_ptr<Part> &part_ptr = PartFactory::get_instance().createPart(part_name);
 						if (!part_ptr) {
 							MessageBox(NULL, L"²¿¼þ´íÎó", NULL, MB_OK|MB_TOPMOST);
@@ -73,10 +82,7 @@ bool GlobalConfig::init()
 						}
 						mode.add_part_action(part_ptr, action[part_name].asString());
 						LOG_DEBUG << "part: " << part_name << ", action: " << action[part_name].asString();
-						if (members.size() > 1) {
-							float sleep_time = action["sleep"].asFloat();
-							mode.add_sleep(part_name, sleep_time);
-						}
+
 					}
 					// add mode to mode manager
 					mode_manager.add_mode(mode_name, mode);

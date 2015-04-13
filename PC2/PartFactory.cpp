@@ -30,6 +30,16 @@
 #include "FragranceLight.h"
 #include "IPAtmosphereLight.h"
 #include "SidePanelLight.h"
+#include "AudioSystem.h"
+#include "DashboardPower.h"
+#include "LeftSeatPower.h"
+#include "RightSeatPower.h"
+#include "BackMidLightPower.h"
+#include "BackSideLightPower.h"
+#include "BackLogoLightPower.h"
+#include "FrontMidLightPower.h"
+#include "FrontDaytimeLightPower.h"
+#include "SidePanelLightPower.h"
 
 namespace mxnavi {
 
@@ -58,7 +68,7 @@ PartFactory::PartFactory(void)
 	part_containner["tail-door"] = std::make_shared<TailDoor>();
 	part_containner["driver-seat"] = std::make_shared<DriverSeat>();
 	part_containner["co-driver-seat"] = std::make_shared<CoDriverSeat>();
-	part_containner["side-panel-light"] = std::make_shared<SideAtmosphereLight>();
+	part_containner["side-panel-light"] = std::make_shared<SidePanelLight>();
 	part_containner["side-atmosphere-light"] = std::make_shared<SideAtmosphereLight>();
 	part_containner["threshold-atmosphere-light"] = std::make_shared<ThresholdAtmosphereLight>();
 	part_containner["ip-atmosphere-light"] = std::make_shared<IPAtmosphereLight>();
@@ -74,6 +84,19 @@ PartFactory::PartFactory(void)
 	part_containner["left-window-sheeting"] = std::make_shared<LeftWindowSheeting>();
 	part_containner["right-window-sheeting"] = std::make_shared<RightWindowSheeting>();
 	part_containner["back-window-sheeting"] = std::make_shared<BackWindowSheeting>();
+
+	part_containner["audio-system"] = std::make_shared<AudioSystem>();
+
+	//power manager
+	part_containner["back-logo-light-power"] = std::make_shared<BackLogoLightPower>();
+	part_containner["back-mid-light-power"] = std::make_shared<BackMidLightPower>();
+	part_containner["back-side-light-power"] = std::make_shared<BackSideLightPower>();
+	part_containner["dashboard-power"] = std::make_shared<DashboardPower>();
+	part_containner["front-daytime-light-power"] = std::make_shared<FrontDaytimeLightPower>();
+	part_containner["front-mid-light-power"] = std::make_shared<FrontMidLightPower>();
+	part_containner["left-seat-power"] = std::make_shared<LeftSeatPower>();
+	part_containner["right-seat-power"] = std::make_shared<RightSeatPower>();
+	part_containner["side-panel-light-power"] = std::make_shared<SidePanelLightPower>();
 
 	part_relationship_table[0x11] = "front-mid-light";
 	part_relationship_table[0x32] = "front-door";

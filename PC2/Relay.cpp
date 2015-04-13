@@ -11,10 +11,12 @@ Relay::Relay(void)
 
 Relay::~Relay(void)
 {
+
 }
 
 bool Relay::make_init_command()
 {
+	serial_command.data[5] |= 0x01;
 	return true;
 }
 

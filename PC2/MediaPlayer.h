@@ -17,6 +17,7 @@ public:
 	virtual bool make_init_command();
 	virtual bool do_command();
 private:
+	static void onMouse(int event, int x, int y, int flag, void *parma);
 	std::string current_action;
 	static void play_video();
 	static bool exit_flag;

@@ -24,12 +24,39 @@ SerialPortManager::~SerialPortManager(void)
 {
 }
 
+std::wstring Ansi2WChar(LPCSTR pszSrc, int nLen)
+
+{
+int nSize = MultiByteToWideChar(CP_ACP, 0, (LPCSTR)pszSrc, nLen, 0, 0);
+if(nSize <= 0) return NULL;
+
+WCHAR *pwszDst = new WCHAR[nSize+1];
+if( NULL == pwszDst) return NULL;
+
+MultiByteToWideChar(CP_ACP, 0,(LPCSTR)pszSrc, nLen, pwszDst, nSize);
+pwszDst[nSize] = 0;
+
+if( pwszDst[0] == 0xFEFF) // skip Oxfeff
+for(int i = 0; i < nSize; i ++)
+pwszDst[i] = pwszDst[i+1];
+
+std::wstring wcharString(pwszDst);
+delete pwszDst;
+
+return wcharString;
+}
+
+std::wstring s2ws(const string& s){ return Ansi2WChar(s.c_str(),s.size());} 
+
 bool SerialPortManager::init()
 {
+	std::string current_port_name;
 	try {
 		// add serial port to the container.
+		
 		for (const auto on_port : on_serial_port_container) {
 			io_service iosev; 
+			current_port_name = on_port.first;
 			serial_ports[on_port.first] = std::make_shared<boost::asio::serial_port>(iosev, on_port.first);
 			serial_ports[on_port.first]->set_option(  serial_port::baud_rate( on_port.second.baudrate ) );                 
 			serial_ports[on_port.first]->set_option(  serial_port::flow_control( serial_port::flow_control::none ) ); 
@@ -49,7 +76,8 @@ bool SerialPortManager::init()
 		}
 	} catch (const boost::system::system_error& e) {
 		LOG_DEBUG << e.what();
-		MessageBox(NULL, L"´®¿ÚÅäÖÃ´íÎó", NULL, MB_OK|MB_TOPMOST);
+		std::wstring w_com_name = s2ws(current_port_name);
+		MessageBox(NULL, L"´®¿ÚÅäÖÃ´íÎó", w_com_name.c_str(), MB_OK|MB_TOPMOST);
 		ExitProcess(-1);
 	}
 

@@ -65,6 +65,36 @@ bool MediaPlayer::do_command()
 	return true;
 }
 
+
+void MediaPlayer::onMouse(int event, int x, int y, int flag, void *param)
+{
+    switch(event)
+    {
+    case EVENT_LBUTTONDOWN:
+
+        break;
+
+    case EVENT_LBUTTONUP:
+
+        break;
+
+    case EVENT_RBUTTONDOWN:
+
+        break;
+
+    case EVENT_MOUSEMOVE:
+        if(flag & EVENT_FLAG_LBUTTON)
+        {
+
+        }
+        break;
+    default:
+        break;
+    }
+
+}
+
+
 void MediaPlayer::play_video()
 {
 	std::unique_lock<std::mutex> lock(pause_mutex);
@@ -107,8 +137,9 @@ void MediaPlayer::play_video()
     //承载每一帧的图像
     Mat frame;
     //显示每一帧的窗口
-    namedWindow("video");
-
+	string winName = "video";
+    namedWindow(winName);
+	setMouseCallback(winName, onMouse, NULL);
     double delay = 1000/rate;
 
 
@@ -122,11 +153,11 @@ void MediaPlayer::play_video()
         if(!capture.read(frame))
         {
             LOG_DEBUG <<"读取视频失败";
-            return ;    
+            goto exit ;    
         }
         
         imshow("video",frame);
-        LOG_DEBUG << "正在读取第" << currentFrame << "帧";
+        //LOG_DEBUG << "正在读取第" << currentFrame << "帧";
 
         int c = waitKey(delay);
         //按下ESC或者到达指定的结束帧后退出读取视频
@@ -147,6 +178,7 @@ void MediaPlayer::play_video()
         currentFrame++;
     
     }
+exit:
 	playing_flag = false;
 	pause_flag = false;
 	if (!exit_flag)

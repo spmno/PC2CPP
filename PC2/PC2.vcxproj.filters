@@ -46,6 +46,9 @@
     <Filter Include="part\SeatMotor">
       <UniqueIdentifier>{0afb5bb7-75cf-411b-ab76-658731b81c7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="part\Relay\PowerManager">
+      <UniqueIdentifier>{4715ab04-fb07-48a3-9aeb-942228dbeb34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -210,8 +213,38 @@
     <ClInclude Include="SleepTimeManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="BackLogoLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BackMidLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BackSideLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DashboardPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontDaytimeLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontMidLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftSeatPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SidePanelLightPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerManager.h">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
     <ClInclude Include="SidePanelLight.h">
-      <Filter>头文件</Filter>
+      <Filter>part\light</Filter>
+    </ClInclude>
+    <ClInclude Include="RightSeatPower.h">
+      <Filter>part\Relay\PowerManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -373,6 +406,36 @@
     </ClCompile>
     <ClCompile Include="SleepTimeManager.cpp">
       <Filter>part\light</Filter>
+    </ClCompile>
+    <ClCompile Include="DashboardPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BackLogoLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontMidLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontDaytimeLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BackSideLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BackMidLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftSeatPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerManager.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="RightSeatPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SidePanelLightPower.cpp">
+      <Filter>part\Relay\PowerManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
