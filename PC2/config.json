@@ -1,13 +1,14 @@
 { "serial":
   [
-    {"COM7":{"baudrate":115200, "status":"on", "parts":["wheel"]}}, 
+    {"COM7":{"baudrate":115200, "status":"off", "parts":["wheel"]}}, 
 	{"COM11":{"baudrate":9600, "status":"off", "parts":["wheel", "wheel-handle"]}}, 
 	{"COM24":{"baudrate":115200, "status":"off", "parts":["iris-door"]}}
   ],
   "mode":
   [ 
 	{ "name":"reset", "actions": [
-		{"wheel":"f1", "sleep":1.0}
+		{"wheel":"f1", "sleep":1.0},
+		{"wheel":"f2"}
 	]
 	}
   ], 

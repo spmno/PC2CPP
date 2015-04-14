@@ -3,6 +3,10 @@
 #include <string>
 #include <condition_variable>
 #include <mutex>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <Windows.h>
 
 namespace mxnavi {
 
@@ -25,6 +29,10 @@ private:
 	static bool playing_flag;
 	static std::condition_variable pause_condition;
 	static std::mutex pause_mutex;
+	static long total_frame_number;
+	static cv::VideoCapture capture;
+	static long current_frame;
+	static HANDLE event;
 };
 
 }

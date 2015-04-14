@@ -71,8 +71,9 @@ bool GlobalConfig::init()
 							if (part_name == "sleep") {
 								part_name = members[1];
 							}
+							string sleep_name = mode_name + "-" + part_name + "-" + action[part_name].asString();
 							float sleep_time = action["sleep"].asFloat();
-							mode.add_sleep(part_name, sleep_time);
+							mode.add_sleep(sleep_name, sleep_time);
 						} 						
 						
 						std::shared_ptr<Part> &part_ptr = PartFactory::get_instance().createPart(part_name);

@@ -2,7 +2,9 @@
 #include <thread>
 #include <sstream>
 #include <boost/format.hpp>
+#include <json/json.h>
 #include "SerialPortManager.h"
+#include "NetServer.h"
 #include "MXLogger.h"
 #include "Part.h"
 #include "PartFactory.h"
@@ -95,21 +97,30 @@ bool SerialPortManager::send_command(const string& part, const SerialCommand* co
 		return false;
 	}
 	for(int i = 0; i < command->count; ++i) {
-		serial_ports[port_name]->write_some(boost::asio::buffer(command->data, command->size));
-		if (command->size == 1) {
-			boost::format fmt("%02X");
-			for (int i = 0; i < 1; ++i) {
-				fmt % (int)command->data[i];
+		try {
+			serial_ports[port_name]->write_some(boost::asio::buffer(command->data, command->size));
+			if (command->size == 1) {
+				boost::format fmt("%02X");
+				for (int i = 0; i < 1; ++i) {
+					fmt % (int)command->data[i];
+				}
+				LOG_DEBUG << "send  " << fmt.str();
+			} else {
+				boost::format fmt("%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X");
+				for (int i = 0; i < SERIAL_COMMAND_LENGTH; ++i) {
+					fmt % (int)command->data[i];
+				}
+				LOG_DEBUG << "send  " << fmt.str();
 			}
-			LOG_DEBUG << "send  " << fmt.str();
-		} else {
-			boost::format fmt("%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X");
-			for (int i = 0; i < SERIAL_COMMAND_LENGTH; ++i) {
-				fmt % (int)command->data[i];
-			}
-			LOG_DEBUG << "send  " << fmt.str();
+		} catch(const boost::system::system_error& e) {
+			LOG_DEBUG << e.what();
+			Json::FastWriter writer;
+			Json::Value value;
+			value["result"] = "fault";
+			value["part"] = port_name;
+			string net_command = writer.write(value);
+			NetServer::get_instance().write(net_command);
 		}
-
 	}
 
 	return true;

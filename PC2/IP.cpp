@@ -12,6 +12,7 @@ IP::IP(void)
 
 IP::~IP(void)
 {
+
 }
 
 bool IP::make_init_command()

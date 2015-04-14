@@ -14,7 +14,7 @@ public:
 	virtual ~Mode(void);
 	void add_part_action(std::shared_ptr<Part>& part_ptr, std::string &action_name); 
 	void add_sleep(std::string& part_name, float sleep_time);
-	void do_mode();
+	void do_mode(const std::string& name);
 protected:
 	//std::vector<std::shared_ptr<Part> > part_ptr_container;
 	//std::vector<std::string> action_container;

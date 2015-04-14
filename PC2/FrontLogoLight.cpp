@@ -11,6 +11,7 @@ FrontLogoLight::FrontLogoLight(void)
 
 FrontLogoLight::~FrontLogoLight(void)
 {
+
 }
 
 }

@@ -12,6 +12,7 @@ Mode::Mode(void)
 
 Mode::~Mode(void)
 {
+
 }
 
 void Mode::add_part_action(std::shared_ptr<Part>& part_ptr, std::string &action_name)
@@ -26,7 +27,7 @@ void Mode::add_sleep(std::string& part_name, float sleep_time)
 	sleep_conatainer[part_name] = sleep_time;
 }
 
-void Mode::do_mode()
+void Mode::do_mode(const std::string& name)
 {
 	for (auto action : action_container) {
 		action.first->make_serial_command(action.second);
@@ -35,9 +36,10 @@ void Mode::do_mode()
 		if (!ret) {
 			LOG_ERROR << "write " << action.first->get_name() << " command failed!";
 		}
-		if (sleep_conatainer.find(action.first->get_name()) != sleep_conatainer.end()) {
-			float sleep_time = sleep_conatainer[action.first->get_name()];
-			LOG_ERROR << "sleep";
+		std::string sleep_name = name + "-" + action.first->get_name() + "-" + action.second;
+		if (sleep_conatainer.find(sleep_name) != sleep_conatainer.end()) {
+			float sleep_time = sleep_conatainer[sleep_name];
+			LOG_ERROR << sleep_name << sleep_time;
 			Sleep(sleep_time*1000);
 		}
 	}

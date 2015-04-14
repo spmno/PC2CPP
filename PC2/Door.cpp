@@ -34,10 +34,10 @@ void Door::make_serial_command(const std::string& action)
 		serial_command.data[5] = ON_ACTION;
 	} else if (action == "close1") {
 		current_command = OFF1_ACTION;
-		//serial_command.data[5] = OFF1_ACTION;
+		serial_command.data[5] = OFF1_ACTION;
 	} else if (action == "close2") {
 		current_command = OFF2_ACTION;
-		//serial_command.data[5] = OFF2_ACTION;
+		serial_command.data[5] = OFF2_ACTION;
 	} else if (action == "close") {
 		current_command = OFF1_ACTION;
 		serial_command.data[5] = OFF1_ACTION;
