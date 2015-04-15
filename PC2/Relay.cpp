@@ -17,7 +17,7 @@ Relay::~Relay(void)
 bool Relay::make_init_command()
 {
 	serial_command.data[5] |= 0x01;
-	return true;
+	return false;
 }
 
 void Relay::make_serial_command(const std::string& action)

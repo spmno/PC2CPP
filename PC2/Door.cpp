@@ -22,7 +22,7 @@ Door::~Door(void)
 
 bool Door::make_init_command()
 {
-	return true;
+	return false;
 }
 
 void Door::make_serial_command(const std::string& action) 

@@ -18,6 +18,7 @@ public:
 	}
 	std::shared_ptr<Part> & createPart(const std::string& part_name);
 	std::shared_ptr<Part> & createPart(unsigned int part_number);
+	std::map<std::string, std::shared_ptr<Part> > & get_part_container() { return part_containner; }
 private:
 	PartFactory();
 	std::map<std::string, std::shared_ptr<Part> > part_containner;

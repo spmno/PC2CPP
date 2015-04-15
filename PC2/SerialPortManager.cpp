@@ -68,13 +68,9 @@ bool SerialPortManager::init()
 			ReadSerialTask read_task;
 			std::thread read_thread(read_task, on_port.first, serial_ports[on_port.first], task_func);
 			read_thread.detach();
-			//send init to every serial port
-			/*
-			PartFactory &part_factory = PartFactory::get_instance();
-			std::shared_ptr<Part> part_ptr = part_factory.createPart(on_port.first);
-			part_ptr->make_init_command();
-			send_command(part_ptr->get_name(), part_ptr->get_command());
-			*/
+
+
+			
 		}
 	} catch (const boost::system::system_error& e) {
 		LOG_DEBUG << e.what();
@@ -83,6 +79,12 @@ bool SerialPortManager::init()
 		ExitProcess(-1);
 	}
 
+	for (auto part_pair : PartFactory::get_instance().get_part_container()) {
+		if (part_pair.second->make_init_command()) {
+			send_command(part_pair.second->get_name(), part_pair.second->get_command());
+		}
+	}
+	
 	LOG_DEBUG << "Serial Port Init Successful!";
 	return true;
 }

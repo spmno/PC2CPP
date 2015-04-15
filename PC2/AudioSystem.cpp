@@ -9,9 +9,14 @@ AudioSystem::AudioSystem(void)
 	serial_command.data[5] = 0x10;
 }
 
-
 AudioSystem::~AudioSystem(void)
 {
+}
+
+bool AudioSystem::make_init_command()
+{
+	serial_command.data[5] |= 0x01;
+	return true;
 }
 
 }

@@ -18,7 +18,7 @@ Light::~Light(void)
 
 bool Light::make_init_command()
 {
-	return true;
+	return false;
 }
 
 void Light::make_serial_command(const std::string& action)

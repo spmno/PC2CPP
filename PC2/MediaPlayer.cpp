@@ -40,7 +40,7 @@ MediaPlayer::~MediaPlayer(void)
 
 bool MediaPlayer::make_init_command()
 {
-	return true;
+	return false;
 }
 
 void MediaPlayer::make_serial_command(const std::string& action)

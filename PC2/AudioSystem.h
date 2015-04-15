@@ -9,6 +9,7 @@ class AudioSystem :
 public:
 	AudioSystem(void);
 	~AudioSystem(void);
+	virtual bool make_init_command();
 };
 
 }

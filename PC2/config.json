@@ -1,6 +1,6 @@
 { "serial":
   [
-    {"COM7":{"baudrate":115200, "status":"off", "parts":["wheel"]}}, 
+    {"COM7":{"baudrate":115200, "status":"on", "parts":["back-logo-light-power"]}}, 
 	{"COM11":{"baudrate":9600, "status":"off", "parts":["wheel", "wheel-handle"]}}, 
 	{"COM24":{"baudrate":115200, "status":"off", "parts":["iris-door"]}}
   ],

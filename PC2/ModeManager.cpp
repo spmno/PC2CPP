@@ -18,7 +18,7 @@ void ModeManager::do_mode(std::string &mode_name)
 		Mode &mode = mode_container[mode_name];
 		mode.do_mode(mode_name);
 	} else {
-		MessageBox(NULL, L"无此模式", NULL, MB_OK|MB_TOPMOST);
+		//MessageBox(NULL, L"无此模式", NULL, MB_OK|MB_TOPMOST);
 	}
 
 }
