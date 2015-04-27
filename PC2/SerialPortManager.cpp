@@ -27,7 +27,6 @@ SerialPortManager::~SerialPortManager(void)
 }
 
 std::wstring Ansi2WChar(LPCSTR pszSrc, int nLen)
-
 {
 int nSize = MultiByteToWideChar(CP_ACP, 0, (LPCSTR)pszSrc, nLen, 0, 0);
 if(nSize <= 0) return NULL;
@@ -68,9 +67,6 @@ bool SerialPortManager::init()
 			ReadSerialTask read_task;
 			std::thread read_thread(read_task, on_port.first, serial_ports[on_port.first], task_func);
 			read_thread.detach();
-
-
-			
 		}
 	} catch (const boost::system::system_error& e) {
 		LOG_DEBUG << e.what();

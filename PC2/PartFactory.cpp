@@ -40,6 +40,7 @@
 #include "FrontMidLightPower.h"
 #include "FrontDaytimeLightPower.h"
 #include "SidePanelLightPower.h"
+#include "SOS.h"
 
 namespace mxnavi {
 
@@ -86,6 +87,9 @@ PartFactory::PartFactory(void)
 	part_containner["back-window-sheeting"] = std::make_shared<BackWindowSheeting>();
 
 	part_containner["audio-system"] = std::make_shared<AudioSystem>();
+
+	//sos
+	part_containner["sos"] = std::make_shared<SOS>();
 
 	//power manager
 	part_containner["back-logo-light-power"] = std::make_shared<BackLogoLightPower>();

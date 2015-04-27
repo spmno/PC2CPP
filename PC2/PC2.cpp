@@ -17,6 +17,8 @@
 
 using namespace mxnavi;
 
+extern BOOL RestartWindows();
+
 void updateNetFunction(string& content)
 {
 	Json::Reader reader;
@@ -27,6 +29,8 @@ void updateNetFunction(string& content)
 	
 		if (value["type"].asString() == "init") {
 			return;
+		} else if (value["type"].asString() == "reboot") {
+			RestartWindows();
 		} else if (value["type"].asString() == "single") {
 			std::shared_ptr<Part> &part_ptr = part_factory.createPart(value["part"].asString());
 			if (!part_ptr) {
@@ -62,6 +66,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		MessageBox(NULL, L"≈‰÷√Œƒº˛¥ÌŒÛ", NULL, MB_OK|MB_TOPMOST);
 		return false;
 	}
+	//ShowCursor(FALSE);
+	SetCursorPos(0, 0);
 	NetServer::get_instance().start();
 	SerialPortManager::get_instance().init();
 	NetServer::get_instance().addUpdateFunction(updateNetFunction);

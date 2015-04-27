@@ -11,6 +11,7 @@ ThresholdAtmosphereLight::ThresholdAtmosphereLight(void)
 
 ThresholdAtmosphereLight::~ThresholdAtmosphereLight(void)
 {
+
 }
 
 }

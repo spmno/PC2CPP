@@ -81,9 +81,6 @@
     <ClInclude Include="SerialPortManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalConfig.h">
-      <Filter>part</Filter>
-    </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>part</Filter>
     </ClInclude>
@@ -245,6 +242,12 @@
     </ClInclude>
     <ClInclude Include="RightSeatPower.h">
       <Filter>part\Relay\PowerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SOS.h">
+      <Filter>part\Relay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +439,12 @@
     </ClCompile>
     <ClCompile Include="SidePanelLightPower.cpp">
       <Filter>part\Relay\PowerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="reboot.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SOS.cpp">
+      <Filter>part\Relay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

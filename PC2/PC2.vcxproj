@@ -145,6 +145,7 @@
     <ClInclude Include="SidePanelLightPower.h" />
     <ClInclude Include="SkyLightSheeting.h" />
     <ClInclude Include="SleepTimeManager.h" />
+    <ClInclude Include="SOS.h" />
     <ClInclude Include="src\lib_json\json_batchallocator.h" />
     <ClInclude Include="src\lib_json\json_tool.h" />
     <ClInclude Include="stdafx.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="LeftSeatPower.cpp" />
     <ClCompile Include="LeftWindowSheeting.cpp" />
     <ClCompile Include="PowerManager.cpp" />
+    <ClCompile Include="reboot.cpp" />
     <ClCompile Include="Relay.cpp" />
     <ClCompile Include="RightSeatPower.cpp" />
     <ClCompile Include="RightWindowSheeting.cpp" />
@@ -211,6 +213,7 @@
     <ClCompile Include="SidePanelLightPower.cpp" />
     <ClCompile Include="SkyLightSheeting.cpp" />
     <ClCompile Include="SleepTimeManager.cpp" />
+    <ClCompile Include="SOS.cpp" />
     <ClCompile Include="src\lib_json\json_reader.cpp" />
     <ClCompile Include="src\lib_json\json_value.cpp" />
     <ClCompile Include="src\lib_json\json_writer.cpp" />

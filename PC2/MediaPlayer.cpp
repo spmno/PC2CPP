@@ -57,6 +57,7 @@ void MediaPlayer::make_net_command(unsigned int command)
 bool MediaPlayer::do_command()
 {
 	if (current_action == "play") {
+		SetCursorPos(0, 0);
 		pause_flag = false;
 		if (playing_flag) {
 			destroyWindow("image");
@@ -130,6 +131,14 @@ void MediaPlayer::play_video()
 		//if (SetWindowPos(image_handle, HWND_TOP, 0, 0, 1280, 720, SWP_NOSIZE|SWP_NOREDRAW) == FALSE) {
 		//	MessageBox(NULL, L"ERROR", NULL, MB_TOPMOST);
 		//}
+		//LONG style = GetWindowLong( image_handle, GWL_EXSTYLE); 
+		//style = style | WS_EX_LAYERED; 
+		//SetWindowLong( image_handle, GWL_EXSTYLE, style); 
+		//style = GetWindowLong(image_handle, GWL_STYLE);
+		//style = style & (~WS_CAPTION) & ~(WS_BORDER) & ~WS_THICKFRAME; 
+		//SetWindowLong( image_handle, GWL_STYLE, style); 
+		
+		//SetLayeredWindowAttributes(image_handle, RGB(255,255,255), 0, LWA_COLORKEY);
 		int c = waitKey(delay);
 
         //按下ESC或者到达指定的结束帧后退出读取视频
